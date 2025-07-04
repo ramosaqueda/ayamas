@@ -59,11 +59,9 @@ const WhatsAppButton = ({
       className={`${variants[variant]} ${sizes[size]} ${className}`}
     >
       <MessageCircle className={`${iconSizes[size]} ${variant === 'inline' ? '' : 'mr-2'}`} />
-      {variant !== 'floating' && (
-        <span>
-          {variant === 'inline' ? 'WhatsApp' : 'Escribir por WhatsApp'}
-        </span>
-      )}
+      <span>
+        {variant === 'inline' ? 'WhatsApp' : 'Escribir por WhatsApp'}
+      </span>
     </a>
   )
 }
