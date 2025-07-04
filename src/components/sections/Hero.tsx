@@ -33,12 +33,12 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in-up">
-              A&A Más Corredores de Seguros{' '}
-              <span className="text-secondary-500">Tu Protección</span>
+                Tu Protección,{' '}
+                <span className="text-secondary-500">Nuestro Compromiso</span>
               </h1>
               <p className="text-xl text-white/90 max-w-xl animate-fade-in-up animation-delay-200">
-              Corredores independientes comprometidos con ayudarte a tomar las mejores decisiones. 
-              Transparencia, profesionalismo y respaldo garantizado.
+                Más de 25 años protegiendo lo que más valoras. Seguros confiables,
+                atención personalizada y respaldo garantizado.
               </p>
             </div>
 
@@ -76,7 +76,7 @@ const Hero = () => {
               </div>
               <div className="flex items-center gap-3 text-white/90">
                 <MapPin className="w-5 h-5" />
-                <span className="text-sm">Santiago, Chile</span>
+                <span className="text-sm">La Serena, Chile</span>
               </div>
             </div>
           </div>
