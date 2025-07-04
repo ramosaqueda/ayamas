@@ -143,10 +143,10 @@ El diseño utiliza una paleta de colores basada en rojo corporativo:
 Crea un archivo `.env.local` con:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://ayamasseguros.cl
-NEXT_PUBLIC_CONTACT_EMAIL=contacto@segurosayamas.cl
-NEXT_PUBLIC_CONTACT_PHONE=600123456
-NEXT_PUBLIC_GOOGLE_ANALYTICS=G-XXXXXXXXXX
+NEXT_PUBLIC_SITE_URL=https://
+NEXT_PUBLIC_CONTACT_EMAIL=contacto@se
+NEXT_PUBLIC_CONTACT_PHONE=
+NEXT_PUBLIC_GOOGLE_ANALYTICS=G-X
 ```
 
 ### Personalización
