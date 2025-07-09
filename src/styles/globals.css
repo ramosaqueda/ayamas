@@ -33,15 +33,11 @@
   }
   
   .btn-secondary {
-    @apply bg-primary-50 text-primary-800 hover:bg-primary-100 border border-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
+    @apply bg-secondary-500 text-neutral-800 hover:bg-secondary-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
   }
   
   .btn-outline {
     @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white transition-all duration-300;
-  }
-  
-  .btn-accent {
-    @apply bg-accent-500 text-white hover:bg-accent-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
   }
   
   .gradient-primary {
@@ -49,43 +45,23 @@
   }
   
   .gradient-secondary {
-    @apply bg-gradient-to-r from-primary-50 to-primary-100;
-  }
-  
-  .gradient-accent {
-    @apply bg-gradient-to-r from-accent-500 to-accent-600;
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600;
   }
   
   .glass-effect {
     @apply backdrop-blur-md bg-white/10 border border-white/20;
   }
   
-  .card {
-    @apply bg-white rounded-lg shadow-medium border border-neutral-200 p-6 transition-all duration-300 hover:shadow-large;
-  }
-  
-  .card-primary {
-    @apply bg-primary-50 border-primary-200 shadow-ayamas;
-  }
-  
-  .section-padding {
-    @apply py-16 lg:py-24;
-  }
-  
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent;
-  }
-  
   .shadow-ayamas {
-    box-shadow: 0 2px 20px rgba(0, 171, 228, 0.1);
+    box-shadow: 0 2px 20px rgba(220, 20, 60, 0.1);
   }
   
   .shadow-ayamas-lg {
-    box-shadow: 0 10px 30px rgba(0, 171, 228, 0.15);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.15);
   }
   
   .shadow-ayamas-xl {
-    box-shadow: 0 20px 40px rgba(0, 171, 228, 0.2);
+    box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
   }
 }
 
@@ -105,14 +81,6 @@
   .animation-delay-600 {
     animation-delay: 600ms;
   }
-  
-  .animation-delay-800 {
-    animation-delay: 800ms;
-  }
-  
-  .animation-delay-1000 {
-    animation-delay: 1000ms;
-  }
 }
 
 /* Custom scrollbar */
@@ -125,43 +93,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00ABE4;
+  background: #DC143C;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0077B6;
-}
-
-/* Focus styles */
-:focus-visible {
-  outline: 2px solid #00ABE4;
-  outline-offset: 2px;
-}
-
-/* Selection styles */
-::selection {
-  background-color: #E9F1FA;
-  color: #003B5C;
-}
-
-/* Smooth transitions for all interactive elements */
-button, a, input, textarea, select {
-  transition: all 0.3s ease;
-}
-
-/* Loading animation */
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
-
-.shimmer {
-  animation: shimmer 2s infinite;
-  background: linear-gradient(90deg, #f0f0f0 0px, #e0e0e0 40px, #f0f0f0 80px);
-  background-size: 200px 100%;
+  background: #B22222;
 }
