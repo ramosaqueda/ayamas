@@ -8,12 +8,12 @@
   * {
     @apply box-border;
   }
-  
+
   body {
     @apply bg-white text-neutral-900;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -23,43 +23,43 @@
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .btn {
     @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
   }
-  
+
   .btn-primary {
-    @apply bg-primary-500 text-white hover:bg-primary-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
+    @apply bg-primary-900 text-white hover:bg-primary-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
   }
-  
+
   .btn-secondary {
     @apply bg-secondary-500 text-neutral-800 hover:bg-secondary-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
   }
-  
+
   .btn-outline {
     @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white transition-all duration-300;
   }
-  
+
   .gradient-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600;
+    @apply bg-gradient-to-r from-red-800 to-red-600;
   }
-  
+
   .gradient-secondary {
     @apply bg-gradient-to-r from-secondary-500 to-secondary-600;
   }
-  
+
   .glass-effect {
     @apply backdrop-blur-md bg-white/10 border border-white/20;
   }
-  
+
   .shadow-ayamas {
     box-shadow: 0 2px 20px rgba(220, 20, 60, 0.1);
   }
-  
+
   .shadow-ayamas-lg {
     box-shadow: 0 10px 30px rgba(220, 20, 60, 0.15);
   }
-  
+
   .shadow-ayamas-xl {
     box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
   }
@@ -69,17 +69,97 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-  
+
   .animation-delay-400 {
     animation-delay: 400ms;
   }
-  
+
   .animation-delay-600 {
     animation-delay: 600ms;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Hero Carousel Specific Styles */
+  .hero-carousel .carousel-dots {
+    @apply absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20;
+  }
+
+  .hero-carousel .carousel-arrows {
+    @apply z-20;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  /* Product detail page styles */
+  .product-feature-item {
+    @apply flex items-start gap-3 p-4 bg-neutral-50 rounded-lg hover:bg-neutral-100 transition-all duration-300 cursor-default;
+  }
+
+  .product-feature-item:hover {
+    @apply shadow-sm transform translate-x-1;
+  }
+
+  .product-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .product-card {
+    @apply bg-white rounded-xl shadow-ayamas hover:shadow-ayamas-lg transition-all duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-1;
+  }
+
+  .product-price {
+    @apply text-4xl font-bold text-primary-600;
+  }
+
+  .product-original-price {
+    @apply text-2xl text-neutral-400 line-through font-medium;
+  }
+
+  .contact-action-btn {
+    @apply flex items-center justify-center gap-2 px-4 py-3 border-2 border-white text-white hover:bg-white hover:text-primary-600 rounded-lg transition-all duration-300 font-medium;
+  }
+
+  @keyframes pulse-gentle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .animate-pulse-gentle {
+    animation: pulse-gentle 2s ease-in-out infinite;
   }
 }
 
@@ -93,10 +173,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #DC143C;
+  background: #dc143c;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B22222;
+  background: #b22222;
 }

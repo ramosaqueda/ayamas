@@ -2,6 +2,12 @@
 
 import { useState, useEffect } from 'react'
 
+// API Hooks
+export * from './api/useProducts'
+export * from './api/useCarousel'
+
+// Utility Hooks
+
 export function useScrollPosition() {
   const [scrollPosition, setScrollPosition] = useState(0)
 

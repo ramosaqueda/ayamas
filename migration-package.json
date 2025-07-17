@@ -1,0 +1,7 @@
+{
+  "name": "migrate-categories",
+  "scripts": {
+    "migrate": "tsx src/scripts/migrate-categories.ts",
+    "migrate:rollback": "tsx src/scripts/migrate-categories.ts --rollback"
+  }
+}

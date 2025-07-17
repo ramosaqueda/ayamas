@@ -11,13 +11,13 @@ interface CardProps {
   onClick?: () => void
 }
 
-const Card = ({ 
-  children, 
-  className = '', 
+const Card = ({
+  children,
+  className = '',
   variant = 'default',
   padding = 'md',
   hover = false,
-  onClick 
+  onClick
 }: CardProps) => {
   const variants = {
     default: 'bg-white',

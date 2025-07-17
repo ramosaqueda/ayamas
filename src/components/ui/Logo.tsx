@@ -34,12 +34,12 @@ const Logo = ({ className = '', size = 'md' }: LogoProps) => {
       {/* Main Logo Row */}
       <div className={`flex items-center ${currentSize.container}`}>
         {/* Red Section - A&A+ */}
-        <div className="bg-primary-600 text-white px-3 py-2 flex items-center justify-center h-full">
+        <div className="bg-red-800 text-white px-3 py-2 flex items-center justify-center h-full">
           <span className={`font-bold ${currentSize.mainText} leading-none`}>
             A&A<span className="text-yellow-300">+</span>
           </span>
         </div>
-        
+
         {/* White Section - Ltda. */}
         <div className="bg-white text-neutral-800 px-3 py-2 flex items-center justify-center h-full border-r border-neutral-200">
           <span className={`font-bold ${currentSize.ltdaText} leading-none`}>
@@ -47,7 +47,7 @@ const Logo = ({ className = '', size = 'md' }: LogoProps) => {
           </span>
         </div>
       </div>
-      
+
       {/* Gray Subtitle */}
       <div className="bg-neutral-600 text-white w-full">
         <div className={`text-center ${currentSize.subText} font-medium tracking-wide uppercase`}>

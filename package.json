@@ -12,27 +12,41 @@
     "clean": "rm -rf .next",
     "analyze": "ANALYZE=true npm run build",
     "export": "next export",
-    "preview": "npm run build && npm run start"
+    "preview": "npm run build && npm run start",
+    "seed": "tsx scripts/seedDatabase.ts",
+    "db:seed": "npm run seed",
+    "verify": "node scripts/verify-dependencies.js",
+    "setup": "npm install && npm run verify",
+    "migrate:categories": "tsx src/scripts/migrate-categories.ts",
+    "migrate:categories:rollback": "tsx src/scripts/migrate-categories.ts --rollback",
+    "migrate:simple": "tsx src/scripts/migrate-simple.ts",
+    "migrate:direct": "node migrate-direct.js",
+    "fix:categories": "node fix-categories.js"
   },
   "dependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@types/uuid": "^9.0.8",
+    "clsx": "^2.0.0",
+    "dotenv": "^16.3.1",
+    "framer-motion": "^10.16.16",
+    "lucide-react": "^0.295.0",
+    "mongoose": "^8.0.3",
     "next": "14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
-    "framer-motion": "^10.16.16",
-    "lucide-react": "^0.295.0",
-    "clsx": "^2.0.0",
     "tailwind-merge": "^2.2.0",
-    "@types/node": "^20.10.5",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
+    "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32"
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
   }
 }

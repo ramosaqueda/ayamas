@@ -4,7 +4,17 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['localhost', 'ayamasseguros.cl'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+    ],
+    domains: ['localhost', 'ayamasseguros.cl', 'images.pexels.com', 'images.unsplash.com', 'picsum.photos'],
     formats: ['image/webp', 'image/avif'],
   },
   typescript: {

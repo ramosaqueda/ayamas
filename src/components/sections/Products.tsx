@@ -1,15 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { Car, Building, Home, Heart, Sailboat, Stethoscope, Plane, Building2, ArrowRight, Check, PersonStanding } from 'lucide-react'
+import { ArrowRight, Check } from 'lucide-react'
+import { useProducts } from '@/hooks'
+import { getIcon } from '@/lib/iconUtils'
 
 const Products = () => {
-  const [activeProduct, setActiveProduct] = useState<number | null>(null)
+  const [activeProduct, setActiveProduct] = useState<string | null>(null)
+  const { products, loading, error } = useProducts({ active: true })
 
-  const products = [
+  // Datos de respaldo en caso de que no haya productos en la BD
+  const fallbackProducts = [
     {
-      id: 1,
-      icon: <PersonStanding className="w-8 h-8" />,
+      _id: '1',
       title: 'Seguros Personales',
       description: 'Protege tu hogar y tu familia con nuestras coberturas personalizadas',
       price: 'Desde $30.000',
@@ -17,16 +20,18 @@ const Products = () => {
       features: [
         'Seguros de Vida con inversión o ahorro',
         'Seguros de Vida de Protección y Salud',
-        'Seguro Hogar Protegido ( Incendio y Sismo, Robo)',
+        'Seguro Hogar Protegido (Incendio y Sismo, Robo)',
         'Seguro Automotriz (Daños Propios y Terceros, Robo)',
         'Seguro de Responsabilidad Civil',
       ],
+      icon: 'person-standing',
       color: 'from-green-500 to-green-600',
-      popular: true
+      category: 'personal',
+      popular: true,
+      active: true
     },
     {
-      id: 2,
-      icon: <Building2 className="w-8 h-8" />,
+      _id: '2',
       title: 'Seguros Empresariales',
       description: 'Protege tu negocio con nuestras soluciones integrales',
       price: 'Desde $50.000',
@@ -35,16 +40,18 @@ const Products = () => {
         'Seguro de vehículos comerciales livianos',
         'Seguro de vehículos comerciales pesados',
         'Seguro de flota de vehículos',
-        'Seguro de de responsabilidad civil máxima',
-        'Seguro de viajes especificos para empresas',
-        'Seguro polizas por proyectos',
+        'Seguro de responsabilidad civil máxima',
+        'Seguro de viajes específicos para empresas',
+        'Seguro pólizas por proyectos',
       ],
+      icon: 'building2',
       color: 'from-purple-500 to-purple-600',
-      popular: false
+      category: 'empresarial',
+      popular: false,
+      active: true
     },
     {
-      id: 3,
-      icon: <Stethoscope className="w-8 h-8" />,
+      _id: '3',
       title: 'Seguro de Colectivos',
       description: 'Cubre tus gastos médicos y hospitalarios con nuestra amplia red de clínicas',
       price: 'Desde $25.000',
@@ -56,13 +63,15 @@ const Products = () => {
         'Seguros dentales',
         'Planes familiares disponibles'
       ],
+      icon: 'stethoscope',
       color: 'from-orange-500 to-orange-600',
-      popular: false
+      category: 'salud',
+      popular: false,
+      active: true
     },
     {
-      id: 4,
-      icon: <Sailboat className="w-8 h-8" />,
-      title: 'Seguros especiales',
+      _id: '4',
+      title: 'Seguros Especiales',
       description: 'Tenemos seguros para cada necesidad, desde viajes hasta eventos especiales',
       price: 'Desde $20.000',
       period: '/mes',
@@ -72,49 +81,77 @@ const Products = () => {
         'Seguro yates',
         'Seguro garantía y crédito',
       ],
+      icon: 'sailboat',
       color: 'from-teal-500 to-teal-600',
-      popular: false
+      category: 'especiales',
+      popular: false,
+      active: true
     },
     {
-      id: 5,
-      icon: <Building className="w-8 h-8" />,
+      _id: '5',
       title: 'Seguro Condominios',
-      description: 'Maximisamos la seguridad de tu comunidad con nuestras pólizas de condominios',
+      description: 'Maximizamos la seguridad de tu comunidad con nuestras pólizas de condominios',
       price: 'Desde $45.000',
       period: '/mes',
       features: [
-        'Insendio,sismo y robo',
+        'Incendio, sismo y robo',
         'Responsabilidad civil',
         'Accidentes personales',
         'Riesgos de la naturaleza',
         'Rotura de cañerías',
-        'Averia de maquinarias',
+        'Avería de maquinarias',
         'Rotura de cristales de áreas comunes',
-        'Riesgos politicos y sociales',
+        'Riesgos políticos y sociales',
         'Asistencias áreas comunes',
       ],
+      icon: 'building',
       color: 'from-blue-500 to-blue-600',
-      popular: true
+      category: 'condominios',
+      popular: true,
+      active: true
     },
     {
-      id: 6,
-      icon: <Plane className="w-8 h-8" />,
-      title: 'Seguro Obligatorios',
+      _id: '6',
+      title: 'Seguros Obligatorios',
       description: 'La tranquilidad de cumplir con la ley y protegerte a ti y a los demás',
       price: 'Desde $15.000',
       period: '/mes',
       features: [
         'Seguro de vida conductores',
         'Seguros de responsabilidad civil internacional',
-        'Segruos de viajes y asistencia al viajero',
+        'Seguros de viajes y asistencia al viajero',
         'Seguros de vigilantes y guardias',
         'Seguro de accidentes personales en viaje'
       ],
+      icon: 'plane',
       color: 'from-red-500 to-red-600',
-      popular: false
+      category: 'obligatorios',
+      popular: false,
+      active: true
     },
-
   ]
+
+  // Usar productos de la BD o datos de respaldo
+  const productsToRender = products.length > 0 ? products : fallbackProducts
+
+  // Mostrar loading
+  if (loading) {
+    return (
+      <section id="productos" className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 mx-auto mb-4"></div>
+            <p>Cargando productos...</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Mostrar error (usar datos de respaldo)
+  if (error) {
+    console.error('Error loading products:', error)
+  }
 
   return (
     <section id="productos" className="py-20 bg-neutral-50">
@@ -132,12 +169,12 @@ const Products = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
+          {productsToRender.map((product) => (
             <div
-              key={product.id}
-              className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-ayamas-xl transition-all duration-300 overflow-hidden ${activeProduct === product.id ? 'ring-2 ring-primary-500' : ''
+              key={product._id}
+              className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-ayamas-xl transition-all duration-300 overflow-hidden ${activeProduct === product._id ? 'ring-2 ring-primary-500' : ''
                 }`}
-              onMouseEnter={() => setActiveProduct(product.id)}
+              onMouseEnter={() => setActiveProduct(product._id)}
               onMouseLeave={() => setActiveProduct(null)}
             >
               {/* Popular Badge */}
@@ -152,7 +189,7 @@ const Products = () => {
                 {/* Icon and Title */}
                 <div className="flex items-start justify-between mb-6">
                   <div className={`flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${product.color} text-white group-hover:scale-110 transition-transform duration-300`}>
-                    {product.icon}
+                    {getIcon(product.icon, "w-8 h-8")}
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-primary-500">
@@ -189,7 +226,7 @@ const Products = () => {
                   </ul>
                   {product.features.length > 4 && (
                     <div className="text-sm text-primary-500 mt-2">
-                      +{product.features.length - 4} tipos más de segruos
+                      +{product.features.length - 4} tipos más de seguros
                     </div>
                   )}
                 </div>

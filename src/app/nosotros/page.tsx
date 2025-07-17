@@ -3,7 +3,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingChat from '@/components/ui/FloatingChat'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
-import AboutHero from '@/components/sections/AboutHero'
+import Hero from '@/components/sections/Hero'
 import Mission from '@/components/sections/Mission'
 import WhyChooseUs from '@/components/sections/WhyChooseUs'
 import Association from '@/components/sections/Association'
@@ -23,7 +23,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen">
       <Header />
-      <AboutHero />
+      <Hero />
       <Mission />
       <WhyChooseUs />
       <Association />
