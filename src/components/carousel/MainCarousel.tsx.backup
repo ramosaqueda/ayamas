@@ -308,7 +308,7 @@ const MainCarousel = () => {
         className="hero-carousel"
       >
         {slidesToRender.map((slide) => (
-          <div key={slide._id.toString()}>
+          <div key={slide._id}>
             {renderSlide(slide)}
           </div>
         ))}

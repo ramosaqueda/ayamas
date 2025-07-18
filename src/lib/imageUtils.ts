@@ -1,4 +1,120 @@
 // Utilidad para comprimir y redimensionar imágenes en el cliente
 // Esta función se puede usar antes de subir para mejorar el rendimiento
 
-export interface ImageCompressionOptions {\n  maxWidth?: number\n  maxHeight?: number\n  quality?: number\n  format?: 'jpeg' | 'png' | 'webp'\n}\n\nexport function compressImage(\n  file: File,\n  options: ImageCompressionOptions = {}\n): Promise<File> {\n  return new Promise((resolve, reject) => {\n    const {\n      maxWidth = 1200,\n      maxHeight = 800,\n      quality = 0.8,\n      format = 'jpeg'\n    } = options\n\n    const canvas = document.createElement('canvas')\n    const ctx = canvas.getContext('2d')\n    const img = new Image()\n\n    img.onload = () => {\n      // Calcular nuevas dimensiones manteniendo proporción\n      let { width, height } = img\n      \n      if (width > maxWidth) {\n        height = (height * maxWidth) / width\n        width = maxWidth\n      }\n      \n      if (height > maxHeight) {\n        width = (width * maxHeight) / height\n        height = maxHeight\n      }\n\n      // Configurar canvas\n      canvas.width = width\n      canvas.height = height\n\n      // Dibujar imagen redimensionada\n      ctx?.drawImage(img, 0, 0, width, height)\n\n      // Convertir a blob\n      canvas.toBlob(\n        (blob) => {\n          if (blob) {\n            const compressedFile = new File(\n              [blob],\n              `compressed_${file.name}`,\n              {\n                type: `image/${format}`,\n                lastModified: Date.now()\n              }\n            )\n            resolve(compressedFile)\n          } else {\n            reject(new Error('Error al comprimir imagen'))\n          }\n        },\n        `image/${format}`,\n        quality\n      )\n    }\n\n    img.onerror = () => {\n      reject(new Error('Error al cargar imagen'))\n    }\n\n    img.src = URL.createObjectURL(file)\n  })\n}\n\n// Función para validar dimensiones de imagen\nexport function validateImageDimensions(\n  file: File,\n  minWidth = 0,\n  minHeight = 0,\n  maxWidth = Infinity,\n  maxHeight = Infinity\n): Promise<boolean> {\n  return new Promise((resolve) => {\n    const img = new Image()\n    \n    img.onload = () => {\n      const { width, height } = img\n      const isValid = \n        width >= minWidth &&\n        height >= minHeight &&\n        width <= maxWidth &&\n        height <= maxHeight\n      \n      resolve(isValid)\n    }\n    \n    img.onerror = () => resolve(false)\n    img.src = URL.createObjectURL(file)\n  })\n}\n\n// Función para obtener dimensiones de imagen\nexport function getImageDimensions(file: File): Promise<{ width: number; height: number }> {\n  return new Promise((resolve, reject) => {\n    const img = new Image()\n    \n    img.onload = () => {\n      resolve({ width: img.width, height: img.height })\n    }\n    \n    img.onerror = () => {\n      reject(new Error('Error al cargar imagen'))\n    }\n    \n    img.src = URL.createObjectURL(file)\n  })\n}\n
+export interface ImageCompressionOptions {
+  maxWidth?: number
+  maxHeight?: number
+  quality?: number
+  format?: 'jpeg' | 'png' | 'webp'
+}
+
+export function compressImage(
+  file: File,
+  options: ImageCompressionOptions = {}
+): Promise<File> {
+  return new Promise((resolve, reject) => {
+    const {
+      maxWidth = 1200,
+      maxHeight = 800,
+      quality = 0.8,
+      format = 'jpeg'
+    } = options
+
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+    const img = new Image()
+
+    img.onload = () => {
+      // Calcular nuevas dimensiones manteniendo proporción
+      let { width, height } = img
+      
+      if (width > maxWidth) {
+        height = (height * maxWidth) / width
+        width = maxWidth
+      }
+      
+      if (height > maxHeight) {
+        width = (width * maxHeight) / height
+        height = maxHeight
+      }
+
+      // Configurar canvas
+      canvas.width = width
+      canvas.height = height
+
+      // Dibujar imagen redimensionada
+      ctx?.drawImage(img, 0, 0, width, height)
+
+      // Convertir a blob
+      canvas.toBlob(
+        (blob) => {
+          if (blob) {
+            const compressedFile = new File(
+              [blob],
+              `compressed_${file.name}`,
+              {
+                type: `image/${format}`,
+                lastModified: Date.now()
+              }
+            )
+            resolve(compressedFile)
+          } else {
+            reject(new Error('Error al comprimir imagen'))
+          }
+        },
+        `image/${format}`,
+        quality
+      )
+    }
+
+    img.onerror = () => {
+      reject(new Error('Error al cargar imagen'))
+    }
+
+    img.src = URL.createObjectURL(file)
+  })
+}
+
+// Función para validar dimensiones de imagen
+export function validateImageDimensions(
+  file: File,
+  minWidth = 0,
+  minHeight = 0,
+  maxWidth = Infinity,
+  maxHeight = Infinity
+): Promise<boolean> {
+  return new Promise((resolve) => {
+    const img = new Image()
+    
+    img.onload = () => {
+      const { width, height } = img
+      const isValid = 
+        width >= minWidth &&
+        height >= minHeight &&
+        width <= maxWidth &&
+        height <= maxHeight
+      
+      resolve(isValid)
+    }
+    
+    img.onerror = () => resolve(false)
+    img.src = URL.createObjectURL(file)
+  })
+}
+
+// Función para obtener dimensiones de imagen
+export function getImageDimensions(file: File): Promise<{ width: number; height: number }> {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    
+    img.onload = () => {
+      resolve({ width: img.width, height: img.height })
+    }
+    
+    img.onerror = () => {
+      reject(new Error('Error al cargar imagen'))
+    }
+    
+    img.src = URL.createObjectURL(file)
+  })
+}

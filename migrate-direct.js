@@ -118,7 +118,8 @@ async function migrateCategories() {
     const Product = mongoose.models.Product || mongoose.model('Product', ProductSchema)
 
     // Paso 1: Crear categorías
-    console.log('\n📝 Creando categorías...')
+    console.log('
+📝 Creando categorías...')
     const categoryMap = new Map()
     
     for (const categoryData of LEGACY_CATEGORIES) {
@@ -141,7 +142,8 @@ async function migrateCategories() {
     }
 
     // Paso 2: Migrar productos
-    console.log('\n📦 Migrando productos...')
+    console.log('
+📦 Migrando productos...')
     const products = await Product.find({})
     console.log(`   Encontrados ${products.length} productos`)
 
@@ -172,7 +174,8 @@ async function migrateCategories() {
     }
 
     // Paso 3: Verificar resultados
-    console.log('\n🔍 Verificando migración...')
+    console.log('
+🔍 Verificando migración...')
     const totalProducts = await Product.countDocuments()
     const productsWithCategories = await Product.countDocuments({
       category: { $exists: true, $ne: null }
@@ -208,14 +211,17 @@ async function migrateCategories() {
     console.log(`   Válidos: ${validCount}`)
 
     if (validCount === totalProducts) {
-      console.log('\n🎉 ¡Migración completada exitosamente!')
+      console.log('
+🎉 ¡Migración completada exitosamente!')
       console.log('   ✅ Todos los productos tienen categorías válidas')
     } else {
-      console.log('\n⚠️  Migración completada con advertencias')
+      console.log('
+⚠️  Migración completada con advertencias')
       console.log(`   ${totalProducts - validCount} productos con problemas`)
     }
 
-    console.log('\n📊 Resumen:')
+    console.log('
+📊 Resumen:')
     console.log(`   • ${LEGACY_CATEGORIES.length} categorías creadas`)
     console.log(`   • ${migratedCount} productos migrados`)
     console.log(`   • ${skippedCount} productos omitidos`)
@@ -235,11 +241,13 @@ async function migrateCategories() {
 if (require.main === module) {
   migrateCategories()
     .then(() => {
-      console.log('\n✅ Migración completada exitosamente')
+      console.log('
+✅ Migración completada exitosamente')
       process.exit(0)
     })
     .catch((error) => {
-      console.error('\n❌ Error:', error.message)
+      console.error('
+❌ Error:', error.message)
       process.exit(1)
     })
 }

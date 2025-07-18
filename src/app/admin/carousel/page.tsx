@@ -64,7 +64,7 @@ const CarouselPage = () => {
 
   const handleDelete = async (slide: ICarouselSlide) => {
     try {
-      const response = await fetch(`/api/carousel/${slide._id}`, {
+      const response = await fetch(`/api/carousel/${slide._id.toString()}`, {
         method: 'DELETE'
       })
 
@@ -72,7 +72,7 @@ const CarouselPage = () => {
         throw new Error('Error al eliminar slide')
       }
 
-      setSlides(slides.filter(s => s._id !== slide._id))
+      setSlides(slides.filter(s => s._id.toString() !== slide._id.toString()))
       setDeleteModal({ show: false, slide: null })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al eliminar')
@@ -95,7 +95,32 @@ const CarouselPage = () => {
         throw new Error('Error al reordenar slides')
       }
 
-      setSlides(newOrder.map((slide, index) => ({ ...slide, order: index })))
+      setSlides(newOrder.map((slide, index) => ({
+        _id: slide._id,
+        title: slide.title,
+        subtitle: slide.subtitle,
+        description: slide.description,
+        price: slide.price,
+        originalPrice: slide.originalPrice,
+        period: slide.period,
+        discount: slide.discount,
+        features: slide.features,
+        backgroundColor: slide.backgroundColor,
+        backgroundImage: slide.backgroundImage,
+        backgroundOpacity: slide.backgroundOpacity,
+        badge: slide.badge,
+        icon: slide.icon,
+        ctaText: slide.ctaText,
+        ctaUrl: slide.ctaUrl,
+        ctaSecondary: slide.ctaSecondary,
+        ctaSecondaryUrl: slide.ctaSecondaryUrl,
+        href: slide.href,
+        stats: slide.stats,
+        active: slide.active,
+        order: index,
+        createdAt: slide.createdAt,
+        updatedAt: slide.updatedAt
+      } as ICarouselSlide)))
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al reordenar')
     }
@@ -114,14 +139,14 @@ const CarouselPage = () => {
   const handleDrop = (e: React.DragEvent, targetSlide: ICarouselSlide) => {
     e.preventDefault()
     
-    if (!draggedSlide || draggedSlide._id === targetSlide._id) {
+    if (!draggedSlide || draggedSlide._id.toString() === targetSlide._id.toString()) {
       setDraggedSlide(null)
       return
     }
 
     const newSlides = [...slides]
-    const draggedIndex = newSlides.findIndex(s => s._id === draggedSlide._id)
-    const targetIndex = newSlides.findIndex(s => s._id === targetSlide._id)
+    const draggedIndex = newSlides.findIndex(s => s._id.toString() === draggedSlide._id.toString())
+    const targetIndex = newSlides.findIndex(s => s._id.toString() === targetSlide._id.toString())
 
     // Remover el slide arrastrado
     const [movedSlide] = newSlides.splice(draggedIndex, 1)
@@ -237,13 +262,13 @@ const CarouselPage = () => {
             <div className="divide-y divide-gray-200">
               {slides.map((slide, index) => (
                 <div
-                  key={slide._id}
+                  key={slide._id.toString()}
                   draggable
                   onDragStart={(e) => handleDragStart(e, slide)}
                   onDragOver={handleDragOver}
                   onDrop={(e) => handleDrop(e, slide)}
                   className={`p-6 hover:bg-gray-50 transition-colors cursor-move ${
-                    draggedSlide?._id === slide._id ? 'opacity-50' : ''
+                    draggedSlide?._id.toString() === slide._id.toString() ? 'opacity-50' : ''
                   }`}
                 >
                   <div className="flex items-center space-x-4">
@@ -294,15 +319,19 @@ const CarouselPage = () => {
                       </p>
                       <div className="flex items-center space-x-4 mt-2 text-xs text-gray-400">
                         <span>{slide.price} {slide.period}</span>
-                        <span className="flex items-center">
-                          <Star className="w-3 h-3 mr-1" />
-                          {slide.stats.rating}
-                        </span>
-                        <span className="flex items-center">
-                          <Users className="w-3 h-3 mr-1" />
-                          {slide.stats.clients}
-                        </span>
-                        <span>Creado {formatDate(slide.createdAt)}</span>
+                        {slide.stats && (
+                          <>
+                            <span className="flex items-center">
+                              <Star className="w-3 h-3 mr-1" />
+                              {slide.stats.rating}
+                            </span>
+                            <span className="flex items-center">
+                              <Users className="w-3 h-3 mr-1" />
+                              {slide.stats.clients}
+                            </span>
+                          </>
+                        )}
+                        <span>Creado {slide.createdAt ? formatDate(slide.createdAt) : 'N/A'}</span>
                       </div>
                     </div>
 
@@ -325,14 +354,14 @@ const CarouselPage = () => {
                     <div className="flex-shrink-0">
                       <div className="flex items-center space-x-2">
                         <button
-                          onClick={() => router.push(`/admin/carousel/${slide._id}`)}
+                          onClick={() => router.push(`/admin/carousel/${slide._id.toString()}`)}
                           className="text-blue-600 hover:text-blue-900 transition-colors"
                           title="Ver slide"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
                         <button
-                          onClick={() => router.push(`/admin/carousel/${slide._id}/edit`)}
+                          onClick={() => router.push(`/admin/carousel/${slide._id.toString()}/edit`)}
                           className="text-indigo-600 hover:text-indigo-900 transition-colors"
                           title="Editar slide"
                         >

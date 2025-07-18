@@ -21,7 +21,11 @@
     "migrate:categories:rollback": "tsx src/scripts/migrate-categories.ts --rollback",
     "migrate:simple": "tsx src/scripts/migrate-simple.ts",
     "migrate:direct": "node migrate-direct.js",
-    "fix:categories": "node fix-categories.js"
+    "fix:categories": "node fix-categories.js",
+    "fix:newlines": "node fix-newlines.js",
+    "fix:newlines:specific": "node fix-specific-newlines.js",
+    "fix:newlines:all": "node fix-all-newlines.js",
+    "verify:newlines": "node verify-newlines.js"
   },
   "dependencies": {
     "@types/node": "^20.10.5",

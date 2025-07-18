@@ -1,0 +1,1675 @@
+{
+  "timestamp": "2025-07-17T21:01:30.284977",
+  "stats": {
+    "files_processed": 140,
+    "files_fixed": 4,
+    "backups_created": 4,
+    "errors": 0,
+    "total_fixes": 8
+  },
+  "results": [
+    {
+      "file": ".env.example",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": ".env.local",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": ".eslintrc.json",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "README-CORRECCIONES.md",
+      "status": "no_changes_needed",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": [
+        {
+          "type": "broken_console",
+          "line": 186,
+          "content": "console.log('Error durante la migraci\u00f3n:\\\\nRevisar configuraci\u00f3n')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 186,
+          "content": "console.log('Error durante la migraci\u00f3n:\\\\nRevisar configuraci\u00f3n')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 187,
+          "content": "throw new Error('MONGODB_URI no est\u00e1 definida\\\\nen .env.local')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 188,
+          "content": "const message = 'Proceso completado\\\\n\\\\tArchivos procesados: 5'"
+        }
+      ]
+    },
+    {
+      "file": "SOLUCION-COMPLETADA.md",
+      "status": "no_changes_needed",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": [
+        {
+          "type": "broken_console",
+          "line": 25,
+          "content": "console.log('Este script corregir\u00e1 autom\u00e1ticamente los problemas de \\\\n literal')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 25,
+          "content": "console.log('Este script corregir\u00e1 autom\u00e1ticamente los problemas de \\\\n literal')"
+        }
+      ]
+    },
+    {
+      "file": "fix-all-newlines.js",
+      "status": "fixed",
+      "changes": [
+        "Fixed literal \\\\n in strings",
+        "Fixed basic literal \\\\n"
+      ],
+      "errors": [],
+      "backup_path": "fix-all-newlines.js.1752800490.backup",
+      "problems_detected": [
+        {
+          "type": "string_with_literal_newline",
+          "line": 15,
+          "content": "  'Este script corregir\u00e1 autom\u00e1ticamente los problemas de \\\\n literal'"
+        },
+        {
+          "type": "literal_newline",
+          "line": 17,
+          "content": "console.log('encontrados en los archivos del proyecto.\\n')"
+        },
+        {
+          "type": "broken_console",
+          "line": 17,
+          "content": "console.log('encontrados en los archivos del proyecto.\\n')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 17,
+          "content": "console.log('encontrados en los archivos del proyecto.\\n')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 24,
+          "content": "    console.log(`\\n\ud83d\udd27 ${description}...`)"
+        },
+        {
+          "type": "broken_console",
+          "line": 24,
+          "content": "    console.log(`\\n\ud83d\udd27 ${description}...`)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 24,
+          "content": "    console.log(`\\n\ud83d\udd27 ${description}...`)"
+        },
+        {
+          "type": "literal_newline",
+          "line": 74,
+          "content": "    console.log('\\n\ud83d\udcc2 Directorio de trabajo:', process.cwd())"
+        },
+        {
+          "type": "broken_console",
+          "line": 74,
+          "content": "    console.log('\\n\ud83d\udcc2 Directorio de trabajo:', process.cwd())"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 74,
+          "content": "    console.log('\\n\ud83d\udcc2 Directorio de trabajo:', process.cwd())"
+        },
+        {
+          "type": "literal_newline",
+          "line": 90,
+          "content": "    console.log('\\n\ud83d\udd0d Verificando archivos corregidos...')"
+        },
+        {
+          "type": "broken_console",
+          "line": 90,
+          "content": "    console.log('\\n\ud83d\udd0d Verificando archivos corregidos...')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 90,
+          "content": "    console.log('\\n\ud83d\udd0d Verificando archivos corregidos...')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 99,
+          "content": "      console.log('\\n\ud83d\udcdd Para revisar los cambios realizados:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 99,
+          "content": "      console.log('\\n\ud83d\udcdd Para revisar los cambios realizados:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 99,
+          "content": "      console.log('\\n\ud83d\udcdd Para revisar los cambios realizados:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 105,
+          "content": "      console.log('\\n\ud83d\uddd1\ufe0f  Para eliminar los backups despu\u00e9s de verificar:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 105,
+          "content": "      console.log('\\n\ud83d\uddd1\ufe0f  Para eliminar los backups despu\u00e9s de verificar:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 105,
+          "content": "      console.log('\\n\ud83d\uddd1\ufe0f  Para eliminar los backups despu\u00e9s de verificar:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 110,
+          "content": "    console.log('\\n' + '='.repeat(60))"
+        },
+        {
+          "type": "broken_console",
+          "line": 110,
+          "content": "    console.log('\\n' + '='.repeat(60))"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 110,
+          "content": "    console.log('\\n' + '='.repeat(60))"
+        },
+        {
+          "type": "literal_newline",
+          "line": 114,
+          "content": "    console.log('\\n\ud83d\udccb Resumen de acciones realizadas:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 114,
+          "content": "    console.log('\\n\ud83d\udccb Resumen de acciones realizadas:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 114,
+          "content": "    console.log('\\n\ud83d\udccb Resumen de acciones realizadas:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 121,
+          "content": "    console.log('\\n\ud83d\udd04 Pr\u00f3ximos pasos recomendados:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 121,
+          "content": "    console.log('\\n\ud83d\udd04 Pr\u00f3ximos pasos recomendados:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 121,
+          "content": "    console.log('\\n\ud83d\udd04 Pr\u00f3ximos pasos recomendados:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 132,
+          "content": "    console.log('\\n\ud83c\udfaf \u00a1Los problemas de salto de l\u00ednea han sido corregidos!')"
+        },
+        {
+          "type": "broken_console",
+          "line": 132,
+          "content": "    console.log('\\n\ud83c\udfaf \u00a1Los problemas de salto de l\u00ednea han sido corregidos!')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 132,
+          "content": "    console.log('\\n\ud83c\udfaf \u00a1Los problemas de salto de l\u00ednea han sido corregidos!')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 134,
+          "content": "    console.error('\\n\u274c Error durante el proceso de correcci\u00f3n:', error.message)"
+        },
+        {
+          "type": "broken_console",
+          "line": 134,
+          "content": "    console.error('\\n\u274c Error durante el proceso de correcci\u00f3n:', error.message)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 134,
+          "content": "    console.error('\\n\u274c Error durante el proceso de correcci\u00f3n:', error.message)"
+        },
+        {
+          "type": "literal_newline",
+          "line": 135,
+          "content": "    console.log('\\n\ud83d\udd04 Puedes intentar ejecutar los scripts individuales:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 135,
+          "content": "    console.log('\\n\ud83d\udd04 Puedes intentar ejecutar los scripts individuales:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 135,
+          "content": "    console.log('\\n\ud83d\udd04 Puedes intentar ejecutar los scripts individuales:')"
+        }
+      ]
+    },
+    {
+      "file": "fix-categories.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "fix-newlines.js",
+      "status": "fixed",
+      "changes": [
+        "Fixed literal \\\\n in strings",
+        "Fixed basic literal \\\\n"
+      ],
+      "errors": [],
+      "backup_path": "fix-newlines.js.1752800490.backup",
+      "problems_detected": [
+        {
+          "type": "string_with_literal_newline",
+          "line": 15,
+          "content": "  'Este script corregir\u00e1 autom\u00e1ticamente los problemas de \\\\n literal'"
+        },
+        {
+          "type": "literal_newline",
+          "line": 17,
+          "content": "console.log('encontrados en los archivos del proyecto.\\n')"
+        },
+        {
+          "type": "broken_console",
+          "line": 17,
+          "content": "console.log('encontrados en los archivos del proyecto.\\n')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 17,
+          "content": "console.log('encontrados en los archivos del proyecto.\\n')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 24,
+          "content": "    console.log(`\\n\ud83d\udd27 ${description}...`)"
+        },
+        {
+          "type": "broken_console",
+          "line": 24,
+          "content": "    console.log(`\\n\ud83d\udd27 ${description}...`)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 24,
+          "content": "    console.log(`\\n\ud83d\udd27 ${description}...`)"
+        },
+        {
+          "type": "literal_newline",
+          "line": 74,
+          "content": "    console.log('\\n\ud83d\udcc2 Directorio de trabajo:', process.cwd())"
+        },
+        {
+          "type": "broken_console",
+          "line": 74,
+          "content": "    console.log('\\n\ud83d\udcc2 Directorio de trabajo:', process.cwd())"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 74,
+          "content": "    console.log('\\n\ud83d\udcc2 Directorio de trabajo:', process.cwd())"
+        },
+        {
+          "type": "literal_newline",
+          "line": 90,
+          "content": "    console.log('\\n\ud83d\udd0d Verificando archivos corregidos...')"
+        },
+        {
+          "type": "broken_console",
+          "line": 90,
+          "content": "    console.log('\\n\ud83d\udd0d Verificando archivos corregidos...')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 90,
+          "content": "    console.log('\\n\ud83d\udd0d Verificando archivos corregidos...')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 99,
+          "content": "      console.log('\\n\ud83d\udcdd Para revisar los cambios realizados:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 99,
+          "content": "      console.log('\\n\ud83d\udcdd Para revisar los cambios realizados:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 99,
+          "content": "      console.log('\\n\ud83d\udcdd Para revisar los cambios realizados:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 105,
+          "content": "      console.log('\\n\ud83d\uddd1\ufe0f  Para eliminar los backups despu\u00e9s de verificar:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 105,
+          "content": "      console.log('\\n\ud83d\uddd1\ufe0f  Para eliminar los backups despu\u00e9s de verificar:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 105,
+          "content": "      console.log('\\n\ud83d\uddd1\ufe0f  Para eliminar los backups despu\u00e9s de verificar:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 110,
+          "content": "    console.log('\\n' + '='.repeat(60))"
+        },
+        {
+          "type": "broken_console",
+          "line": 110,
+          "content": "    console.log('\\n' + '='.repeat(60))"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 110,
+          "content": "    console.log('\\n' + '='.repeat(60))"
+        },
+        {
+          "type": "literal_newline",
+          "line": 114,
+          "content": "    console.log('\\n\ud83d\udccb Resumen de acciones realizadas:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 114,
+          "content": "    console.log('\\n\ud83d\udccb Resumen de acciones realizadas:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 114,
+          "content": "    console.log('\\n\ud83d\udccb Resumen de acciones realizadas:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 121,
+          "content": "    console.log('\\n\ud83d\udd04 Pr\u00f3ximos pasos recomendados:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 121,
+          "content": "    console.log('\\n\ud83d\udd04 Pr\u00f3ximos pasos recomendados:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 121,
+          "content": "    console.log('\\n\ud83d\udd04 Pr\u00f3ximos pasos recomendados:')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 132,
+          "content": "    console.log('\\n\ud83c\udfaf \u00a1Los problemas de salto de l\u00ednea han sido corregidos!')"
+        },
+        {
+          "type": "broken_console",
+          "line": 132,
+          "content": "    console.log('\\n\ud83c\udfaf \u00a1Los problemas de salto de l\u00ednea han sido corregidos!')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 132,
+          "content": "    console.log('\\n\ud83c\udfaf \u00a1Los problemas de salto de l\u00ednea han sido corregidos!')"
+        },
+        {
+          "type": "literal_newline",
+          "line": 134,
+          "content": "    console.error('\\n\u274c Error durante el proceso de correcci\u00f3n:', error.message)"
+        },
+        {
+          "type": "broken_console",
+          "line": 134,
+          "content": "    console.error('\\n\u274c Error durante el proceso de correcci\u00f3n:', error.message)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 134,
+          "content": "    console.error('\\n\u274c Error durante el proceso de correcci\u00f3n:', error.message)"
+        },
+        {
+          "type": "literal_newline",
+          "line": 135,
+          "content": "    console.log('\\n\ud83d\udd04 Puedes intentar ejecutar los scripts individuales:')"
+        },
+        {
+          "type": "broken_console",
+          "line": 135,
+          "content": "    console.log('\\n\ud83d\udd04 Puedes intentar ejecutar los scripts individuales:')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 135,
+          "content": "    console.log('\\n\ud83d\udd04 Puedes intentar ejecutar los scripts individuales:')"
+        }
+      ]
+    },
+    {
+      "file": "fix-scripts.js",
+      "status": "fixed",
+      "changes": [
+        "Fixed literal \\\\n in strings",
+        "Fixed template literals"
+      ],
+      "errors": [],
+      "backup_path": "fix-scripts.js.backup",
+      "problems_detected": [
+        {
+          "type": "broken_console",
+          "line": 15,
+          "content": "  console.log(`\\\\nProcesando: ${path.basename(filePath)}`)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 15,
+          "content": "  console.log(`\\\\nProcesando: ${path.basename(filePath)}`)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 30,
+          "content": "    fixed = fixed.replace(/\\\\\\\\n/g, '\\\\n')"
+        },
+        {
+          "type": "broken_console",
+          "line": 33,
+          "content": "      console.log(`  \u2705 ${beforeNewlines} caracteres \\\\\\\\n corregidos`)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 33,
+          "content": "      console.log(`  \u2705 ${beforeNewlines} caracteres \\\\\\\\n corregidos`)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 38,
+          "content": "    fixed = fixed.replace(/\\\\.includes\\\\('\\\\s*'\\\\)/g, \".includes('\\\\\\\\r\\\\\\\\n')\")"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 46,
+          "content": "    fixed = fixed.replace(/\\\\/\\\\s*\\\\/g/g, '/\\\\\\\\r\\\\\\\\n/g')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 53,
+          "content": "    const beforeConsole = fixed.match(/console\\\\.log\\\\('.*?\\\\\\\\n.*?'\\\\)/g)?.length || 0"
+        },
+        {
+          "type": "broken_console",
+          "line": 54,
+          "content": "    fixed = fixed.replace(/console\\\\.log\\\\('(.*?)\\\\\\\\n(.*?)'\\\\)/g, \"console.log('$1\\\\n$2')\")"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 54,
+          "content": "    fixed = fixed.replace(/console\\\\.log\\\\('(.*?)\\\\\\\\n(.*?)'\\\\)/g, \"console.log('$1\\\\n$2')\")"
+        },
+        {
+          "type": "broken_console",
+          "line": 94,
+          "content": "    console.log(`\\\\n\u26a0\ufe0f  ${file} no encontrado`)"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 94,
+          "content": "    console.log(`\\\\n\u26a0\ufe0f  ${file} no encontrado`)"
+        },
+        {
+          "type": "broken_console",
+          "line": 98,
+          "content": "console.log('\\\\n=====================================')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 98,
+          "content": "console.log('\\\\n=====================================')"
+        },
+        {
+          "type": "broken_console",
+          "line": 105,
+          "content": "  console.log('\\\\n\ud83c\udfaf \u00a1Correcci\u00f3n completada!')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 105,
+          "content": "  console.log('\\\\n\ud83c\udfaf \u00a1Correcci\u00f3n completada!')"
+        },
+        {
+          "type": "broken_console",
+          "line": 109,
+          "content": "  console.log('\\\\n\u2705 Todos los archivos est\u00e1n correctos')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 109,
+          "content": "  console.log('\\\\n\u2705 Todos los archivos est\u00e1n correctos')"
+        }
+      ]
+    },
+    {
+      "file": "fix-specific-newlines.js",
+      "status": "fixed",
+      "changes": [
+        "Fixed literal \\\\n in strings",
+        "Fixed template literals"
+      ],
+      "errors": [],
+      "backup_path": "fix-specific-newlines.js.1752800490.backup",
+      "problems_detected": [
+        {
+          "type": "string_with_literal_newline",
+          "line": 21,
+          "content": "  // Busca patrones como: \"texto\\\\nmas texto\" que deber\u00edan ser \"texto"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 25,
+          "content": "      name: 'Strings con \\\\n literal',"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 26,
+          "content": "      regex: /(['\"`])([^'\"`]*?)\\\\\\\\n([^'\"`]*?)\\1/g,"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 36,
+          "content": "      name: 'console.log con \\\\n literal',"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 38,
+          "content": "        /console\\.(log|error|warn|info)\\s*\\(\\s*['\"`]([^'\"`]*?)\\\\\\\\n([^'\"`]*?)['\"`]\\s*\\)/g,"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 70,
+          "content": "        changes.push('Corregido console.log con \\\\n literal')"
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 83,
+          "content": "        changes.push('Corregido Error string con \\\\n literal')"
+        }
+      ]
+    },
+    {
+      "file": "migrate-direct.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "migration-package.json",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "next-env.d.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "next.config.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "package.json",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "postcss.config.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "public/propuesta.md",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "run-migration.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "scripts/seedDatabase.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "scripts/verify-dependencies.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/carousel/[id]/edit/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/carousel/[id]/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/carousel/new/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/carousel/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/categories/[id]/edit/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/categories/new/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/categories/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/dashboard/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/layout.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/migration/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/news/[id]/edit/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/news/[id]/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/news/new/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/news/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/products/[id]/edit/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/products/[id]/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/products/new/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/admin/products/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/admin/debug-slide/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/admin/migrate-categories/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/admin/migrate-opacity/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/admin/reset-model/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/carousel/[id]/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/carousel/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/categories/[id]/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/categories/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/debug/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/news/[id]/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/news/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/news/slug/[slug]/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/products/[id]/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/products/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/api/upload/image/route.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/brokeris/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/contacto/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/cotizar/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/layout.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/nosotros/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/noticias/[slug]/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/noticias/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/productos/[id]/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/app/productos/page.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/AdminLayout.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/Alert.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/CarouselForm.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/CategoryForm.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/ConfirmDelete.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/DiagnosticTool.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/ImageUploader.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/ImageUploaderTest.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/LoadingSpinner.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/MigrationOpacity.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/NewsForm.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/ProductForm.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/admin/TransparencyTest.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/Carousel.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/FeaturedCarousel.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/MainCarousel.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/MainCarouselFixed.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/NewsCarouselItem.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/NewsCarouselSection.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/ProductCarouselItem.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/ProductsCarouselSection.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/SimpleCarouselTest.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/carousel/index.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/layout/Footer.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/layout/Header.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/AboutHero.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/Association.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/BrokerisSection.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/Contact.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/Hero.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/Mission.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/Products.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/QuotePage.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/Stats.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/Testimonials.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/sections/WhyChooseUs.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/Breadcrumbs.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/Button.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/Card.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/FloatingChat.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/Loading.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/Logo.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/Modal.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/ProductCard.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/ProductsGrid.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/QuoteForm.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/RelatedProducts.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/Toast.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/components/ui/WhatsAppButton.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/hooks/api/useCarousel.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/hooks/api/useHomepageProducts.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/hooks/api/useProducts.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/hooks/index.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/hooks/useProductHooks.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/constants.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/iconUtils.tsx",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/imageUtils.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/models/CarouselSlide.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/models/Category.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/models/News.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/models/Product.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/models/index.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/mongodb/connection.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/mongodb/index.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/types.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/lib/utils.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/scripts/fix-specific-slide.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/scripts/force-update-schema.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/scripts/migrate-carousel-cta-urls.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/scripts/migrate-carousel-opacity.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/scripts/migrate-categories.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "src/scripts/migrate-simple.ts",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "tailwind.config.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "tsconfig.json",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "verify-migration.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    },
+    {
+      "file": "verify-newlines.js",
+      "status": "no_problems",
+      "changes": [],
+      "errors": [],
+      "backup_path": null,
+      "problems_detected": []
+    }
+  ]
+}

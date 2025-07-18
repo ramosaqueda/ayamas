@@ -8,7 +8,8 @@
 const fs = require('fs')
 const path = require('path')
 
-console.log('🔍 Verificando configuración pre-migración...\n')
+console.log('🔍 Verificando configuración pre-migración...
+')
 
 const checks = [
   {
@@ -67,15 +68,19 @@ checks.forEach(({ name, check, message }) => {
   }
 })
 
-console.log('\n' + '='.repeat(50))
+console.log('
+' + '='.repeat(50))
 
 if (allPassed) {
   console.log('🎉 ¡Todas las verificaciones pasaron!')
-  console.log('\n📝 Puedes ejecutar la migración con:')
+  console.log('
+📝 Puedes ejecutar la migración con:')
   console.log('   npm run migrate:categories')
-  console.log('\n🔄 O si necesitas revertir:')
+  console.log('
+🔄 O si necesitas revertir:')
   console.log('   npm run migrate:categories:rollback')
-  console.log('\n🌐 O usa la interfaz web:')
+  console.log('
+🌐 O usa la interfaz web:')
   console.log('   Visita http://localhost:3000/admin/migration')
 } else {
   console.log('⚠️  Algunas verificaciones fallaron')
@@ -83,4 +88,5 @@ if (allPassed) {
   console.log('y asegúrate de que todos los archivos estén en su lugar.')
 }
 
-console.log('\n' + '='.repeat(50))
+console.log('
+' + '='.repeat(50))

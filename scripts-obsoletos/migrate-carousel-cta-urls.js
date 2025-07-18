@@ -97,7 +97,8 @@ async function migrateCarouselCTAUrls() {
       }
     }
 
-    console.log('\n🎉 Migración completada:')
+    console.log('
+🎉 Migración completada:')
     console.log(`   - Slides migrados: ${migrated}`)
     console.log(`   - Slides saltados: ${skipped}`)
     console.log(`   - Total procesados: ${slides.length}`)

@@ -49,7 +49,7 @@ const CarouselSlideDetailPage = () => {
     if (!slide) return
 
     try {
-      const response = await fetch(`/api/carousel/${slide._id}`, {
+      const response = await fetch(`/api/carousel/${slide._id.toString()}`, {
         method: 'DELETE'
       })
 
@@ -139,7 +139,7 @@ const CarouselSlideDetailPage = () => {
             </div>
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => router.push(`/admin/carousel/${slide._id}/edit`)}
+                onClick={() => router.push(`/admin/carousel/${slide._id.toString()}/edit`)}
                 className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <Edit className="w-4 h-4 mr-2" />
@@ -183,9 +183,11 @@ const CarouselSlideDetailPage = () => {
                       </span>
                     )}
                     <div className="flex items-start space-x-4 mb-4">
-                      <div className="flex-shrink-0">
-                        {getIcon(slide.icon, "w-12 h-12 text-white")}
-                      </div>
+                      {slide.icon && (
+                        <div className="flex-shrink-0">
+                          {getIcon(slide.icon, "w-12 h-12 text-white")}
+                        </div>
+                      )}
                       <div className="flex-1">
                         <h1 className="text-3xl font-bold mb-2">{slide.title}</h1>
                         {slide.subtitle && (
@@ -211,14 +213,18 @@ const CarouselSlideDetailPage = () => {
                     </div>
                     
                     <div className="text-right">
-                      <div className="flex items-center text-lg mb-2">
-                        <Star className="w-5 h-5 mr-2 fill-current" />
-                        {slide.stats.rating}
-                      </div>
-                      <div className="flex items-center text-lg">
-                        <Users className="w-5 h-5 mr-2" />
-                        {slide.stats.clients}
-                      </div>
+                      {slide.stats && (
+                        <>
+                          <div className="flex items-center text-lg mb-2">
+                            <Star className="w-5 h-5 mr-2 fill-current" />
+                            {slide.stats.rating}
+                          </div>
+                          <div className="flex items-center text-lg">
+                            <Users className="w-5 h-5 mr-2" />
+                            {slide.stats.clients}
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -231,12 +237,14 @@ const CarouselSlideDetailPage = () => {
                 Características
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {slide.features.map((feature, index) => (
+                {slide.features?.map((feature, index) => (
                   <div key={index} className="flex items-center">
                     <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mr-3"></div>
                     <span className="text-gray-700">{feature}</span>
                   </div>
-                ))}
+                )) || (
+                  <p className="text-gray-500 italic">No hay características definidas</p>
+                )}
               </div>
             </div>
 
@@ -246,12 +254,19 @@ const CarouselSlideDetailPage = () => {
                 Botones de Acción
               </h3>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                  {slide.ctaText}
-                </button>
-                <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-                  {slide.ctaSecondary}
-                </button>
+                {slide.ctaText && (
+                  <button className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                    {slide.ctaText}
+                  </button>
+                )}
+                {slide.ctaSecondary && (
+                  <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                    {slide.ctaSecondary}
+                  </button>
+                )}
+                {!slide.ctaText && !slide.ctaSecondary && (
+                  <p className="text-gray-500 italic">No hay botones de acción configurados</p>
+                )}
               </div>
             </div>
 
@@ -321,8 +336,14 @@ const CarouselSlideDetailPage = () => {
                     Icono
                   </label>
                   <div className="flex items-center space-x-2">
-                    {getIcon(slide.icon, "w-6 h-6 text-gray-600")}
-                    <span className="text-sm text-gray-600">{slide.icon}</span>
+                    {slide.icon ? (
+                      <>
+                        {getIcon(slide.icon, "w-6 h-6 text-gray-600")}
+                        <span className="text-sm text-gray-600">{slide.icon}</span>
+                      </>
+                    ) : (
+                      <span className="text-sm text-gray-500 italic">Sin icono configurado</span>
+                    )}
                   </div>
                 </div>
 
@@ -359,7 +380,7 @@ const CarouselSlideDetailPage = () => {
                     ID del Slide
                   </label>
                   <code className="text-xs bg-gray-100 px-2 py-1 rounded font-mono break-all">
-                    {slide._id}
+                    {slide._id.toString()}
                   </code>
                 </div>
                 
@@ -368,7 +389,7 @@ const CarouselSlideDetailPage = () => {
                     Fecha de Creación
                   </label>
                   <div className="text-sm text-gray-900">
-                    {formatDate(slide.createdAt)}
+                    {slide.createdAt ? formatDate(slide.createdAt) : 'No disponible'}
                   </div>
                 </div>
                 
@@ -377,7 +398,7 @@ const CarouselSlideDetailPage = () => {
                     Última Actualización
                   </label>
                   <div className="text-sm text-gray-900">
-                    {formatDate(slide.updatedAt)}
+                    {slide.updatedAt ? formatDate(slide.updatedAt) : 'No disponible'}
                   </div>
                 </div>
               </div>

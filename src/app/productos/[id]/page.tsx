@@ -37,7 +37,11 @@ export default function ProductDetailPage() {
   const handleEmail = () => {
     if (product) {
       const subject = `Consulta sobre ${product.title}`
-      const body = `Estimados,\n\nMe interesa obtener más información sobre el seguro: ${product.title}\n\nGracias.`
+      const body = `Estimados,
+
+Me interesa obtener más información sobre el seguro: ${product.title}
+
+Gracias.`
       window.open(`mailto:info@ayamas.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_self')
     }
   }

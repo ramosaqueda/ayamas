@@ -190,8 +190,7 @@ async function rollbackMigration() {
       }
     }
 
-    console.log(`
-🎉 Rollback completado: ${revertedCount} productos revertidos`)
+    console.log(`\n🎉 Rollback completado: ${revertedCount} productos revertidos`)
     
   } catch (error) {
     console.error('❌ Error durante el rollback:', error)

@@ -1,1 +1,120 @@
-'use client'\n\nimport { useRouter } from 'next/navigation'\nimport { IProduct } from '@/lib/models/Product'\nimport ProductCard from '@/components/ui/ProductCard'\nimport Loading from '@/components/ui/Loading'\n\ninterface ProductsGridProps {\n  products: IProduct[]\n  loading?: boolean\n  error?: string | null\n  variant?: 'default' | 'compact' | 'homepage'\n  showFeatures?: boolean\n  maxFeatures?: number\n  maxProducts?: number\n  showOnlyPopular?: boolean\n  className?: string\n}\n\nconst ProductsGrid = ({\n  products,\n  loading = false,\n  error = null,\n  variant = 'default',\n  showFeatures = true,\n  maxFeatures = 4,\n  maxProducts,\n  showOnlyPopular = false,\n  className = ''\n}: ProductsGridProps) => {\n  const router = useRouter()\n\n  const handleProductClick = (productId: string) => {\n    router.push(`/productos/${productId}`)\n  }\n\n  // Filtrar productos si es necesario\n  let filteredProducts = products\n  \n  if (showOnlyPopular) {\n    filteredProducts = products.filter(product => product.popular)\n  }\n  \n  if (maxProducts) {\n    filteredProducts = filteredProducts.slice(0, maxProducts)\n  }\n\n  // Loading state\n  if (loading) {\n    return (\n      <div className={`flex items-center justify-center py-12 ${className}`}>\n        <Loading size=\"lg\" variant=\"spinner\" />\n      </div>\n    )\n  }\n\n  // Error state\n  if (error) {\n    return (\n      <div className={`text-center py-12 ${className}`}>\n        <div className=\"text-red-600 mb-4\">\n          <h3 className=\"text-lg font-semibold mb-2\">Error al cargar productos</h3>\n          <p className=\"text-sm\">{error}</p>\n        </div>\n        <button \n          onClick={() => window.location.reload()}\n          className=\"bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors\"\n        >\n          Intentar de nuevo\n        </button>\n      </div>\n    )\n  }\n\n  // No products state\n  if (filteredProducts.length === 0) {\n    return (\n      <div className={`text-center py-12 ${className}`}>\n        <h3 className=\"text-xl font-semibold text-neutral-600 mb-2\">\n          No se encontraron productos\n        </h3>\n        <p className=\"text-neutral-500\">\n          {showOnlyPopular \n            ? 'No hay productos populares disponibles en este momento.'\n            : 'No hay productos disponibles en este momento.'\n          }\n        </p>\n      </div>\n    )\n  }\n\n  // Grid layout based on variant\n  const getGridClasses = () => {\n    switch (variant) {\n      case 'compact':\n        return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'\n      case 'homepage':\n        return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'\n      default:\n        return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'\n    }\n  }\n\n  return (\n    <div className={`${getGridClasses()} ${className}`}>\n      {filteredProducts.map((product) => (\n        <ProductCard\n          key={product._id.toString()}\n          product={product}\n          onClick={handleProductClick}\n          variant={variant}\n          showFeatures={showFeatures}\n          maxFeatures={maxFeatures}\n        />\n      ))}\n    </div>\n  )\n}\n\nexport default ProductsGrid\n
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { IProduct } from '@/lib/models/Product'
+import ProductCard from '@/components/ui/ProductCard'
+import Loading from '@/components/ui/Loading'
+
+interface ProductsGridProps {
+  products: IProduct[]
+  loading?: boolean
+  error?: string | null
+  variant?: 'default' | 'compact' | 'homepage'
+  showFeatures?: boolean
+  maxFeatures?: number
+  maxProducts?: number
+  showOnlyPopular?: boolean
+  className?: string
+}
+
+const ProductsGrid = ({
+  products,
+  loading = false,
+  error = null,
+  variant = 'default',
+  showFeatures = true,
+  maxFeatures = 4,
+  maxProducts,
+  showOnlyPopular = false,
+  className = ''
+}: ProductsGridProps) => {
+  const router = useRouter()
+
+  const handleProductClick = (productId: string) => {
+    router.push(`/productos/${productId}`)
+  }
+
+  // Filtrar productos si es necesario
+  let filteredProducts = products
+  
+  if (showOnlyPopular) {
+    filteredProducts = products.filter(product => product.popular)
+  }
+  
+  if (maxProducts) {
+    filteredProducts = filteredProducts.slice(0, maxProducts)
+  }
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className={`flex items-center justify-center py-12 ${className}`}>
+        <Loading size="lg" variant="spinner" />
+      </div>
+    )
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className={`text-center py-12 ${className}`}>
+        <div className="text-red-600 mb-4">
+          <h3 className="text-lg font-semibold mb-2">Error al cargar productos</h3>
+          <p className="text-sm">{error}</p>
+        </div>
+        <button 
+          onClick={() => window.location.reload()}
+          className="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors"
+        >
+          Intentar de nuevo
+        </button>
+      </div>
+    )
+  }
+
+  // No products state
+  if (filteredProducts.length === 0) {
+    return (
+      <div className={`text-center py-12 ${className}`}>
+        <h3 className="text-xl font-semibold text-neutral-600 mb-2">
+          No se encontraron productos
+        </h3>
+        <p className="text-neutral-500">
+          {showOnlyPopular 
+            ? 'No hay productos populares disponibles en este momento.'
+            : 'No hay productos disponibles en este momento.'
+          }
+        </p>
+      </div>
+    )
+  }
+
+  // Grid layout based on variant
+  const getGridClasses = () => {
+    switch (variant) {
+      case 'compact':
+        return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'
+      case 'homepage':
+        return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
+      default:
+        return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
+    }
+  }
+
+  return (
+    <div className={`${getGridClasses()} ${className}`}>
+      {filteredProducts.map((product) => (
+        <ProductCard
+          key={product._id.toString()}
+          product={product}
+          onClick={handleProductClick}
+          variant={variant}
+          showFeatures={showFeatures}
+          maxFeatures={maxFeatures}
+        />
+      ))}
+    </div>
+  )
+}
+
+export default ProductsGrid

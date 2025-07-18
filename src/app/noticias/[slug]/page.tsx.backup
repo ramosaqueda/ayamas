@@ -300,7 +300,7 @@ const NewsDetailPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedNews.map((newsItem) => (
                 <article
-                  key={newsItem._id.toString()}
+                  key={newsItem._id}
                   onClick={() => handleRelatedNewsClick(newsItem)}
                   className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group border"
                 >

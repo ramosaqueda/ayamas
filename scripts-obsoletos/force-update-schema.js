@@ -37,7 +37,8 @@ async function forceUpdateSchema() {
     }
 
     // Actualizar TODOS los slides para asegurar que tengan backgroundOpacity
-    console.log('\n🔧 Actualizando todos los slides...')
+    console.log('
+🔧 Actualizando todos los slides...')
     
     const bulkOps = slides.map(slide => ({
       updateOne: {
@@ -56,7 +57,8 @@ async function forceUpdateSchema() {
     console.log(`   - Documentos modificados: ${result.modifiedCount}`)
 
     // Verificar resultados
-    console.log('\n🔍 Verificando resultados...')
+    console.log('
+🔍 Verificando resultados...')
     const updatedSlides = await collection.find({}).toArray()
     
     for (const slide of updatedSlides) {
@@ -70,9 +72,11 @@ async function forceUpdateSchema() {
     }).toArray()
 
     if (slidesWithoutOpacity.length === 0) {
-      console.log('\n🎉 ¡Éxito! Todos los slides ahora tienen backgroundOpacity')
+      console.log('
+🎉 ¡Éxito! Todos los slides ahora tienen backgroundOpacity')
     } else {
-      console.log(`\n⚠️  Advertencia: ${slidesWithoutOpacity.length} slides aún no tienen backgroundOpacity`)
+      console.log(`
+⚠️  Advertencia: ${slidesWithoutOpacity.length} slides aún no tienen backgroundOpacity`)
     }
 
   } catch (error) {

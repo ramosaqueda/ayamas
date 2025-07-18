@@ -50,7 +50,7 @@ const ProductDetailPage = () => {
     if (!product) return
 
     try {
-      const response = await fetch(`/api/products/${product._id.toString()}`, {
+      const response = await fetch(`/api/products/${product._id}`, {
         method: 'DELETE'
       })
 
@@ -154,7 +154,7 @@ const ProductDetailPage = () => {
             </div>
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => router.push(`/admin/products/${product._id.toString()}/edit`)}
+                onClick={() => router.push(`/admin/products/${product._id}/edit`)}
                 className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <Edit className="w-4 h-4 mr-2" />

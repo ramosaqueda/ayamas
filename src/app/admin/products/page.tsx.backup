@@ -133,7 +133,7 @@ const ProductsPage = () => {
 
   const handleDelete = async (product: IProduct) => {
     try {
-      const response = await fetch(`/api/products/${product._id.toString()}`, {
+      const response = await fetch(`/api/products/${product._id}`, {
         method: 'DELETE'
       })
 
@@ -141,7 +141,7 @@ const ProductsPage = () => {
         throw new Error('Error al eliminar producto')
       }
 
-      setProducts(products.filter(p => p._id.toString() !== product._id.toString()))
+      setProducts(products.filter(p => p._id !== product._id))
       setDeleteModal({ show: false, product: null })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al eliminar')
@@ -266,7 +266,7 @@ const ProductsPage = () => {
               >
                 <option value="">Todas las categorías</option>
                 {categories.map(cat => (
-                  <option key={cat._id.toString()} value={cat.slug}>{cat.name}</option>
+                  <option key={cat._id} value={cat.slug}>{cat.name}</option>
                 ))}
               </select>
             </div>
@@ -373,7 +373,7 @@ const ProductsPage = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {products.map((product) => (
-                  <tr key={product._id.toString()} className="hover:bg-gray-50">
+                  <tr key={product._id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className={`flex-shrink-0 h-10 w-10 rounded-lg bg-gradient-to-r ${product.color} flex items-center justify-center`}>
@@ -423,14 +423,14 @@ const ProductsPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex items-center space-x-2">
                         <button
-                          onClick={() => router.push(`/admin/products/${product._id.toString()}`)}
+                          onClick={() => router.push(`/admin/products/${product._id}`)}
                           className="text-blue-600 hover:text-blue-900 transition-colors"
                           title="Ver producto"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
                         <button
-                          onClick={() => router.push(`/admin/products/${product._id.toString()}/edit`)}
+                          onClick={() => router.push(`/admin/products/${product._id}/edit`)}
                           className="text-indigo-600 hover:text-indigo-900 transition-colors"
                           title="Editar producto"
                         >

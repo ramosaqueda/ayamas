@@ -1,1 +1,84 @@
-'use client'\n\nimport { useState, useEffect } from 'react'\nimport { IProduct } from '@/lib/models/Product'\n\ninterface UseHomepageProductsOptions {\n  maxProducts?: number\n  showOnlyPopular?: boolean\n  showOnlyActive?: boolean\n}\n\ninterface UseHomepageProductsReturn {\n  products: IProduct[]\n  loading: boolean\n  error: string | null\n  refetch: () => void\n}\n\nexport const useHomepageProducts = ({\n  maxProducts = 6,\n  showOnlyPopular = false,\n  showOnlyActive = true\n}: UseHomepageProductsOptions = {}): UseHomepageProductsReturn => {\n  const [products, setProducts] = useState<IProduct[]>([])\n  const [loading, setLoading] = useState(true)\n  const [error, setError] = useState<string | null>(null)\n\n  const fetchProducts = async () => {\n    try {\n      setLoading(true)\n      setError(null)\n\n      // Construir query params\n      const params = new URLSearchParams()\n      if (showOnlyActive) params.append('active', 'true')\n      if (showOnlyPopular) params.append('popular', 'true')\n      if (maxProducts) params.append('limit', maxProducts.toString())\n      \n      const response = await fetch(`/api/products?${params.toString()}`)\n      \n      if (!response.ok) {\n        throw new Error('Error al cargar productos')\n      }\n\n      const data = await response.json()\n      \n      if (data.success) {\n        let filteredProducts = data.data\n        \n        // Filtros adicionales en cliente si es necesario\n        if (showOnlyPopular && !params.has('popular')) {\n          filteredProducts = filteredProducts.filter((p: IProduct) => p.popular)\n        }\n        \n        if (maxProducts && filteredProducts.length > maxProducts) {\n          filteredProducts = filteredProducts.slice(0, maxProducts)\n        }\n        \n        setProducts(filteredProducts)\n      } else {\n        throw new Error(data.message || 'Error al cargar productos')\n      }\n    } catch (err) {\n      const errorMessage = err instanceof Error ? err.message : 'Error desconocido'\n      setError(errorMessage)\n      console.error('Error fetching homepage products:', err)\n    } finally {\n      setLoading(false)\n    }\n  }\n\n  useEffect(() => {\n    fetchProducts()\n  }, [maxProducts, showOnlyPopular, showOnlyActive])\n\n  return {\n    products,\n    loading,\n    error,\n    refetch: fetchProducts\n  }\n}\n\nexport default useHomepageProducts\n
+'use client'
+
+import { useState, useEffect } from 'react'
+import { IProduct } from '@/lib/models/Product'
+
+interface UseHomepageProductsOptions {
+  maxProducts?: number
+  showOnlyPopular?: boolean
+  showOnlyActive?: boolean
+}
+
+interface UseHomepageProductsReturn {
+  products: IProduct[]
+  loading: boolean
+  error: string | null
+  refetch: () => void
+}
+
+export const useHomepageProducts = ({
+  maxProducts = 6,
+  showOnlyPopular = false,
+  showOnlyActive = true
+}: UseHomepageProductsOptions = {}): UseHomepageProductsReturn => {
+  const [products, setProducts] = useState<IProduct[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+
+      // Construir query params
+      const params = new URLSearchParams()
+      if (showOnlyActive) params.append('active', 'true')
+      if (showOnlyPopular) params.append('popular', 'true')
+      if (maxProducts) params.append('limit', maxProducts.toString())
+      
+      const response = await fetch(`/api/products?${params.toString()}`)
+      
+      if (!response.ok) {
+        throw new Error('Error al cargar productos')
+      }
+
+      const data = await response.json()
+      
+      if (data.success) {
+        let filteredProducts = data.data
+        
+        // Filtros adicionales en cliente si es necesario
+        if (showOnlyPopular && !params.has('popular')) {
+          filteredProducts = filteredProducts.filter((p: IProduct) => p.popular)
+        }
+        
+        if (maxProducts && filteredProducts.length > maxProducts) {
+          filteredProducts = filteredProducts.slice(0, maxProducts)
+        }
+        
+        setProducts(filteredProducts)
+      } else {
+        throw new Error(data.message || 'Error al cargar productos')
+      }
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Error desconocido'
+      setError(errorMessage)
+      console.error('Error fetching homepage products:', err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts()
+  }, [maxProducts, showOnlyPopular, showOnlyActive])
+
+  return {
+    products,
+    loading,
+    error,
+    refetch: fetchProducts
+  }
+}
+
+export default useHomepageProducts

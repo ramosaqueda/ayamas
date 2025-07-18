@@ -171,7 +171,7 @@ const Products = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {productsToRender.map((product) => (
             <div
-              key={product._id.toString()}
+              key={product._id}
               className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-ayamas-xl transition-all duration-300 overflow-hidden ${activeProduct === product._id ? 'ring-2 ring-primary-500' : ''
                 }`}
               onMouseEnter={() => setActiveProduct(product._id)}

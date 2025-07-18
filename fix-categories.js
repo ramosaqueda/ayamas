@@ -81,7 +81,8 @@ async function fixProductCategories() {
       category: { $type: 'string' }
     })
 
-    console.log(`\n🔍 Encontrados ${productsWithStringCategories.length} productos con categorías string:`)
+    console.log(`
+🔍 Encontrados ${productsWithStringCategories.length} productos con categorías string:`)
     
     let fixedCount = 0
     let errorCount = 0
@@ -103,7 +104,8 @@ async function fixProductCategories() {
     }
 
     // Verificar todos los productos
-    console.log('\n🔍 Verificación final:')
+    console.log('
+🔍 Verificación final:')
     const totalProducts = await Product.countDocuments()
     const productsWithObjectId = await Product.countDocuments({
       category: { $type: 'objectId' }
@@ -119,9 +121,11 @@ async function fixProductCategories() {
     console.log(`   Errores: ${errorCount}`)
 
     if (productsWithString === 0) {
-      console.log('\n🎉 ¡Todos los productos tienen categorías ObjectId!')
+      console.log('
+🎉 ¡Todos los productos tienen categorías ObjectId!')
     } else {
-      console.log('\n⚠️  Aún hay productos con categorías string')
+      console.log('
+⚠️  Aún hay productos con categorías string')
     }
 
   } catch (error) {
@@ -137,11 +141,13 @@ async function fixProductCategories() {
 if (require.main === module) {
   fixProductCategories()
     .then(() => {
-      console.log('\n✅ Verificación completada')
+      console.log('
+✅ Verificación completada')
       process.exit(0)
     })
     .catch((error) => {
-      console.error('\n❌ Error:', error.message)
+      console.error('
+❌ Error:', error.message)
       process.exit(1)
     })
 }

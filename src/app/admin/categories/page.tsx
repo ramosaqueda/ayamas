@@ -49,7 +49,7 @@ const CategoriesPage = () => {
     if (!deleteModal.category) return
 
     try {
-      const response = await fetch(`/api/categories/${deleteModal.category._id}`, {
+      const response = await fetch(`/api/categories/${deleteModal.category._id.toString()}`, {
         method: 'DELETE'
       })
 
@@ -60,7 +60,7 @@ const CategoriesPage = () => {
       }
 
       // Actualizar lista
-      setCategories(categories.filter(cat => cat._id !== deleteModal.category!._id))
+      setCategories(categories.filter(cat => cat._id.toString() !== deleteModal.category!._id.toString()))
       setDeleteModal({ isOpen: false, category: null })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al eliminar')
@@ -69,7 +69,7 @@ const CategoriesPage = () => {
 
   const toggleActive = async (category: ICategory) => {
     try {
-      const response = await fetch(`/api/categories/${category._id}`, {
+      const response = await fetch(`/api/categories/${category._id.toString()}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -85,9 +85,10 @@ const CategoriesPage = () => {
       const data = await response.json()
       
       if (data.success) {
-        setCategories(categories.map(cat => 
-          cat._id === category._id ? { ...cat, active: !cat.active } : cat
-        ))
+      // @ts-ignore - Mongoose document compatibility
+      setCategories(categories.map(cat =>
+      cat._id.toString() === category._id.toString() ? { ...cat, active: !cat.active } : cat
+      ))
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al actualizar')
@@ -179,7 +180,7 @@ const CategoriesPage = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {categories.map((category) => (
-                  <tr key={category._id} className="hover:bg-gray-50">
+                  <tr key={category._id.toString()} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div>
@@ -232,7 +233,7 @@ const CategoriesPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex items-center justify-end space-x-2">
                         <button
-                          onClick={() => router.push(`/admin/categories/${category._id}/edit`)}
+                          onClick={() => router.push(`/admin/categories/${category._id.toString()}/edit`)}
                           className="text-blue-600 hover:text-blue-900 transition-colors"
                         >
                           <Edit className="w-4 h-4" />

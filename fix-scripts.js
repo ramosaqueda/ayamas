@@ -1,0 +1,125 @@
+#!/usr/bin/env node
+
+/**
+ * Script de corrección simple y directo para los archivos problemáticos
+ * Corrige específicamente los saltos de línea rotos
+ */
+
+const fs = require('fs')
+const path = require('path')
+
+console.log('🔧 CORRECTOR DIRECTO DE SALTOS DE LÍNEA')
+console.log('=====================================')
+
+function fixFile(filePath) {
+  console.log(`
+Procesando: ${path.basename(filePath)}`)
+  
+  try {
+    const content = fs.readFileSync(filePath, 'utf8')
+    
+    // Crear backup
+    fs.writeFileSync(filePath + '.backup', content)
+    console.log('  💾 Backup creado')
+    
+    // Aplicar correcciones básicas
+    let fixed = content
+    let changes = 0
+    
+    // 1. Corregir 
+ literal en console.log y strings
+    const beforeNewlines = fixed.match(/\\
+/g)?.length || 0
+    fixed = fixed.replace(/\\
+/g, '
+')
+    if (beforeNewlines > 0) {
+      changes += beforeNewlines
+      console.log(`  ✅ ${beforeNewlines} caracteres \\
+ corregidos`)
+    }
+    
+    // 2. Corregir strings rotos de CRLF
+    const beforeEmpty = fixed.match(/\\.includes\\('\\s*'\\)/g)?.length || 0
+    fixed = fixed.replace(/\\.includes\\('\\s*'\\)/g, ".includes('\\\\r\\
+')")
+    if (beforeEmpty > 0) {
+      changes += beforeEmpty
+      console.log(`  ✅ ${beforeEmpty} includes vacíos corregidos`)
+    }
+    
+    // 3. Corregir regex rotos
+    const beforeRegex = fixed.match(/\\/\\s*\\/g/g)?.length || 0
+    fixed = fixed.replace(/\\/\\s*\\/g/g, '/\\\\r\\
+/g')
+    if (beforeRegex > 0) {
+      changes += beforeRegex
+      console.log(`  ✅ ${beforeRegex} regex rotos corregidos`)
+    }
+    
+    // 4. Corregir console.log con saltos rotos
+    const beforeConsole = fixed.match(/console\\.log\\('.*?\\
+.*?'\\)/g)?.length || 0
+    fixed = fixed.replace(/console\\.log\\('(.*?)\\
+(.*?)'\\)/g, "console.log('$1
+$2')")
+    if (beforeConsole > 0) {
+      changes += beforeConsole
+      console.log(`  ✅ ${beforeConsole} console.log corregidos`)
+    }
+    
+    if (changes > 0) {
+      fs.writeFileSync(filePath, fixed)
+      console.log(`  🎉 Archivo corregido (${changes} cambios)`)
+    } else {
+      // Eliminar backup si no hubo cambios
+      fs.unlinkSync(filePath + '.backup')
+      console.log('  ℹ️  No se necesitaron correcciones')
+    }
+    
+    return changes > 0
+    
+  } catch (error) {
+    console.error(`  ❌ Error: ${error.message}`)
+    return false
+  }
+}
+
+// Lista de archivos a corregir
+const filesToFix = [
+  'fix-newlines.js',
+  'fix-specific-newlines.js',
+  'fix-all-newlines.js',
+  'verify-newlines.js'
+]
+
+let totalFixed = 0
+
+filesToFix.forEach(file => {
+  const fullPath = path.join(process.cwd(), file)
+  if (fs.existsSync(fullPath)) {
+    if (fixFile(fullPath)) {
+      totalFixed++
+    }
+  } else {
+    console.log(`
+⚠️  ${file} no encontrado`)
+  }
+})
+
+console.log('
+=====================================')
+console.log('📊 RESUMEN')
+console.log('=====================================')
+console.log(`Archivos corregidos: ${totalFixed}`)
+console.log(`Archivos verificados: ${filesToFix.length}`)
+
+if (totalFixed > 0) {
+  console.log('
+🎯 ¡Corrección completada!')
+  console.log('Ahora puedes ejecutar:')
+  console.log('  npm run fix:newlines:all')
+} else {
+  console.log('
+✅ Todos los archivos están correctos')
+}

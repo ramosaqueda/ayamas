@@ -1,1 +1,244 @@
-'use client'\n\nimport { useState } from 'react'\nimport { ArrowRight, Check, Star, ChevronLeft, ChevronRight } from 'lucide-react'\nimport { useCarouselSlides } from '@/hooks'\nimport { ICarouselSlide } from '@/lib/models'\nimport { useRouter } from 'next/navigation'\n\nconst MainCarouselFixed = () => {\n  const { slides, loading, error } = useCarouselSlides(true)\n  const router = useRouter()\n  const [currentIndex, setCurrentIndex] = useState(0)\n\n  // Función para manejar navegación\n  const handleNavigation = (url?: string) => {\n    console.log('🔗 Navegando a:', url)\n    \n    if (!url) {\n      console.warn('⚠️  No hay URL para navegar')\n      return\n    }\n    \n    // Si es una URL externa\n    if (url.startsWith('http://') || url.startsWith('https://')) {\n      console.log('🌐 Abriendo URL externa:', url)\n      window.open(url, '_blank', 'noopener,noreferrer')\n    } else {\n      // Si es una ruta interna\n      console.log('🏠 Navegando a ruta interna:', url)\n      router.push(url)\n    }\n  }\n\n  // Datos de respaldo\n  const fallbackSlides = [\n    {\n      _id: '1',\n      title: 'Seguro de Vida Premium',\n      subtitle: 'Protección Completa para tu Familia',\n      description: 'El plan más completo con cobertura de vida, invalidez y enfermedades graves.',\n      price: '$45.000',\n      period: '/mes',\n      features: [\n        'Cobertura hasta $200.000.000',\n        'Sin período de carencia',\n        'Asistencia médica 24/7',\n        'Beneficios por hospitalización'\n      ],\n      backgroundColor: 'from-blue-600 to-blue-800',\n      badge: '25% OFF',\n      ctaText: 'Cotizar Ahora',\n      ctaUrl: 'https://google.com',\n      ctaSecondary: 'Más Información',\n      ctaSecondaryUrl: '/admin',\n      stats: { rating: 4.9, clients: '15K+' },\n      active: true,\n      order: 1\n    }\n  ]\n\n  const slidesToRender = slides.length > 0 ? slides : fallbackSlides\n  const currentSlide = slidesToRender[currentIndex] || fallbackSlides[0]\n\n  const goToNext = () => {\n    setCurrentIndex((prev) => (prev + 1) % slidesToRender.length)\n  }\n\n  const goToPrevious = () => {\n    setCurrentIndex((prev) => prev === 0 ? slidesToRender.length - 1 : prev - 1)\n  }\n\n  if (loading) {\n    return (\n      <section className=\"relative w-full h-[70vh] min-h-[500px] bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center\">\n        <div className=\"text-white text-center\">\n          <div className=\"animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4\"></div>\n          <p>Cargando carrusel...</p>\n        </div>\n      </section>\n    )\n  }\n\n  return (\n    <section className=\"relative w-full\">\n      <div className=\"relative w-full h-[70vh] min-h-[500px] overflow-hidden\">\n        {/* Imagen de fondo */}\n        {currentSlide.backgroundImage && (\n          <div\n            className=\"absolute inset-0 bg-cover bg-center\"\n            style={{\n              backgroundImage: `url(${currentSlide.backgroundImage})`\n            }}\n          />\n        )}\n\n        {/* Overlay de gradiente */}\n        <div\n          className={`absolute inset-0 bg-gradient-to-br ${currentSlide.backgroundColor}`}\n          style={{\n            opacity: currentSlide.backgroundImage\n              ? (1 - (currentSlide.backgroundOpacity || 0.2))\n              : 1\n          }}\n        />\n\n        <div className=\"container mx-auto px-4 h-full relative z-10\">\n          <div className=\"grid lg:grid-cols-2 gap-12 items-center h-full py-12\">\n            {/* Content */}\n            <div className=\"space-y-8\">\n              {/* Badge */}\n              {currentSlide.badge && (\n                <div className=\"inline-block\">\n                  <span className={`px-4 py-2 rounded-full text-sm font-bold ${\n                    currentSlide.badge.includes('OFF')\n                      ? 'bg-red-500 text-white'\n                      : 'bg-yellow-400 text-gray-800'\n                  }`}>\n                    {currentSlide.badge}\n                  </span>\n                </div>\n              )}\n\n              {/* Title and Subtitle */}\n              <div className=\"space-y-4\">\n                <h1 className=\"text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight\">\n                  {currentSlide.title}\n                </h1>\n                {currentSlide.subtitle && (\n                  <h2 className=\"text-xl md:text-2xl text-yellow-400 font-semibold\">\n                    {currentSlide.subtitle}\n                  </h2>\n                )}\n                <p className=\"text-lg text-white/90 max-w-xl leading-relaxed\">\n                  {currentSlide.description}\n                </p>\n              </div>\n\n              {/* Features */}\n              <div className=\"space-y-3\">\n                {currentSlide.features?.slice(0, 4).map((feature, index) => (\n                  <div key={index} className=\"flex items-center gap-3 text-white/90\">\n                    <Check className=\"w-5 h-5 text-yellow-400 flex-shrink-0\" />\n                    <span className=\"text-sm\">{feature}</span>\n                  </div>\n                ))}\n              </div>\n\n              {/* Action Buttons */}\n              <div className=\"flex flex-col sm:flex-row gap-4\">\n                <button \n                  onClick={(e) => {\n                    e.preventDefault()\n                    e.stopPropagation()\n                    console.log('🚀 Click en CTA principal:', currentSlide.ctaUrl)\n                    handleNavigation(currentSlide.ctaUrl || currentSlide.href)\n                  }}\n                  className=\"bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg font-semibold flex items-center gap-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105\"\n                >\n                  <span>{currentSlide.ctaText}</span>\n                  <ArrowRight className=\"w-5 h-5\" />\n                </button>\n                \n                {currentSlide.ctaSecondary && (\n                  <button \n                    onClick={(e) => {\n                      e.preventDefault()\n                      e.stopPropagation()\n                      console.log('🚀 Click en CTA secundario:', currentSlide.ctaSecondaryUrl)\n                      handleNavigation(currentSlide.ctaSecondaryUrl || currentSlide.href)\n                    }}\n                    className=\"border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm transform hover:scale-105\"\n                  >\n                    {currentSlide.ctaSecondary}\n                  </button>\n                )}\n              </div>\n\n              {/* Stats */}\n              {(currentSlide.stats?.rating || currentSlide.stats?.clients) && (\n                <div className=\"flex items-center gap-6 text-white/90\">\n                  {currentSlide.stats.rating && (\n                    <div className=\"flex items-center gap-2\">\n                      <Star className=\"w-5 h-5 text-yellow-400 fill-current\" />\n                      <span className=\"font-semibold\">{currentSlide.stats.rating}</span>\n                    </div>\n                  )}\n                  {currentSlide.stats.clients && (\n                    <div className=\"text-sm\">\n                      <span className=\"font-semibold\">{currentSlide.stats.clients}</span> clientes confían en nosotros\n                    </div>\n                  )}\n                </div>\n              )}\n\n              {/* Debug Info */}\n              <div className=\"text-xs text-white/60 bg-black/20 p-2 rounded mt-4\">\n                <p>🔗 CTA Principal: {currentSlide.ctaUrl || 'No definido'}</p>\n                <p>🔗 CTA Secundario: {currentSlide.ctaSecondaryUrl || 'No definido'}</p>\n                <p>🔗 Href respaldo: {currentSlide.href || 'No definido'}</p>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        {/* Navigation arrows */}\n        {slidesToRender.length > 1 && (\n          <>\n            <button\n              onClick={goToPrevious}\n              className=\"absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-all duration-300 z-20\"\n            >\n              <ChevronLeft className=\"w-6 h-6\" />\n            </button>\n            <button\n              onClick={goToNext}\n              className=\"absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-all duration-300 z-20\"\n            >\n              <ChevronRight className=\"w-6 h-6\" />\n            </button>\n          </>\n        )}\n\n        {/* Dots indicator */}\n        {slidesToRender.length > 1 && (\n          <div className=\"absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20\">\n            {slidesToRender.map((_, index) => (\n              <button\n                key={index}\n                onClick={() => setCurrentIndex(index)}\n                className={`w-3 h-3 rounded-full transition-all duration-300 ${\n                  index === currentIndex\n                    ? 'bg-white scale-125'\n                    : 'bg-white/50 hover:bg-white/75'\n                }`}\n              />\n            ))}\n          </div>\n        )}\n      </div>\n    </section>\n  )\n}\n\nexport default MainCarouselFixed\n
+'use client'
+
+import { useState } from 'react'
+import { ArrowRight, Check, Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useCarouselSlides } from '@/hooks'
+import { ICarouselSlide } from '@/lib/models'
+import { useRouter } from 'next/navigation'
+
+const MainCarouselFixed = () => {
+  const { slides, loading, error } = useCarouselSlides(true)
+  const router = useRouter()
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Función para manejar navegación
+  const handleNavigation = (url?: string) => {
+    console.log('🔗 Navegando a:', url)
+    
+    if (!url) {
+      console.warn('⚠️  No hay URL para navegar')
+      return
+    }
+    
+    // Si es una URL externa
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      console.log('🌐 Abriendo URL externa:', url)
+      window.open(url, '_blank', 'noopener,noreferrer')
+    } else {
+      // Si es una ruta interna
+      console.log('🏠 Navegando a ruta interna:', url)
+      router.push(url)
+    }
+  }
+
+  // Datos de respaldo
+  const fallbackSlides = [
+    {
+      _id: '1',
+      title: 'Seguro de Vida Premium',
+      subtitle: 'Protección Completa para tu Familia',
+      description: 'El plan más completo con cobertura de vida, invalidez y enfermedades graves.',
+      price: '$45.000',
+      period: '/mes',
+      features: [
+        'Cobertura hasta $200.000.000',
+        'Sin período de carencia',
+        'Asistencia médica 24/7',
+        'Beneficios por hospitalización'
+      ],
+      backgroundColor: 'from-blue-600 to-blue-800',
+      badge: '25% OFF',
+      ctaText: 'Cotizar Ahora',
+      ctaUrl: 'https://google.com',
+      ctaSecondary: 'Más Información',
+      ctaSecondaryUrl: '/admin',
+      stats: { rating: 4.9, clients: '15K+' },
+      active: true,
+      order: 1
+    }
+  ]
+
+  const slidesToRender = slides.length > 0 ? slides : fallbackSlides
+  const currentSlide = slidesToRender[currentIndex] || fallbackSlides[0]
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % slidesToRender.length)
+  }
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => prev === 0 ? slidesToRender.length - 1 : prev - 1)
+  }
+
+  if (loading) {
+    return (
+      <section className="relative w-full h-[70vh] min-h-[500px] bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+        <div className="text-white text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p>Cargando carrusel...</p>
+        </div>
+      </section>
+    )
+  }
+
+  return (
+    <section className="relative w-full">
+      <div className="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
+        {/* Imagen de fondo */}
+        {currentSlide.backgroundImage && (
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${currentSlide.backgroundImage})`
+            }}
+          />
+        )}
+
+        {/* Overlay de gradiente */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${currentSlide.backgroundColor}`}
+          style={{
+            opacity: currentSlide.backgroundImage
+              ? (1 - (currentSlide.backgroundOpacity || 0.2))
+              : 1
+          }}
+        />
+
+        <div className="container mx-auto px-4 h-full relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center h-full py-12">
+            {/* Content */}
+            <div className="space-y-8">
+              {/* Badge */}
+              {currentSlide.badge && (
+                <div className="inline-block">
+                  <span className={`px-4 py-2 rounded-full text-sm font-bold ${
+                    currentSlide.badge.includes('OFF')
+                      ? 'bg-red-500 text-white'
+                      : 'bg-yellow-400 text-gray-800'
+                  }`}>
+                    {currentSlide.badge}
+                  </span>
+                </div>
+              )}
+
+              {/* Title and Subtitle */}
+              <div className="space-y-4">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                  {currentSlide.title}
+                </h1>
+                {currentSlide.subtitle && (
+                  <h2 className="text-xl md:text-2xl text-yellow-400 font-semibold">
+                    {currentSlide.subtitle}
+                  </h2>
+                )}
+                <p className="text-lg text-white/90 max-w-xl leading-relaxed">
+                  {currentSlide.description}
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className="space-y-3">
+                {currentSlide.features?.slice(0, 4).map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3 text-white/90">
+                    <Check className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <span className="text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    console.log('🚀 Click en CTA principal:', currentSlide.ctaUrl)
+                    handleNavigation(currentSlide.ctaUrl || currentSlide.href)
+                  }}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg font-semibold flex items-center gap-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <span>{currentSlide.ctaText}</span>
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+                
+                {currentSlide.ctaSecondary && (
+                  <button 
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      console.log('🚀 Click en CTA secundario:', currentSlide.ctaSecondaryUrl)
+                      handleNavigation(currentSlide.ctaSecondaryUrl || currentSlide.href)
+                    }}
+                    className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
+                  >
+                    {currentSlide.ctaSecondary}
+                  </button>
+                )}
+              </div>
+
+              {/* Stats */}
+              {(currentSlide.stats?.rating || currentSlide.stats?.clients) && (
+                <div className="flex items-center gap-6 text-white/90">
+                  {currentSlide.stats.rating && (
+                    <div className="flex items-center gap-2">
+                      <Star className="w-5 h-5 text-yellow-400 fill-current" />
+                      <span className="font-semibold">{currentSlide.stats.rating}</span>
+                    </div>
+                  )}
+                  {currentSlide.stats.clients && (
+                    <div className="text-sm">
+                      <span className="font-semibold">{currentSlide.stats.clients}</span> clientes confían en nosotros
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Debug Info */}
+              <div className="text-xs text-white/60 bg-black/20 p-2 rounded mt-4">
+                <p>🔗 CTA Principal: {currentSlide.ctaUrl || 'No definido'}</p>
+                <p>🔗 CTA Secundario: {currentSlide.ctaSecondaryUrl || 'No definido'}</p>
+                <p>🔗 Href respaldo: {currentSlide.href || 'No definido'}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation arrows */}
+        {slidesToRender.length > 1 && (
+          <>
+            <button
+              onClick={goToPrevious}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-all duration-300 z-20"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-all duration-300 z-20"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </>
+        )}
+
+        {/* Dots indicator */}
+        {slidesToRender.length > 1 && (
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+            {slidesToRender.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-white scale-125'
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+export default MainCarouselFixed

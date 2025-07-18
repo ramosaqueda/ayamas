@@ -83,3 +83,6 @@ temp/
 # Temporary files
 *.tmp
 *.temp
+
+# Scripts obsoletos (mantener para referencia, pero excluir del build)
+# scripts-obsoletos/

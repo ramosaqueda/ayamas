@@ -94,7 +94,7 @@ const NewsPage = () => {
 
   const handleDelete = async (newsItem: INews) => {
     try {
-      const response = await fetch(`/api/news/${newsItem._id}`, {
+      const response = await fetch(`/api/news/${newsItem._id.toString()}`, {
         method: 'DELETE'
       })
 
@@ -102,7 +102,7 @@ const NewsPage = () => {
         throw new Error('Error al eliminar noticia')
       }
 
-      setNews(news.filter(n => n._id !== newsItem._id))
+      setNews(news.filter(n => n._id.toString() !== newsItem._id.toString()))
       setDeleteModal({ show: false, news: null })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al eliminar')
@@ -302,7 +302,7 @@ const NewsPage = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {news.map((newsItem) => (
-                  <tr key={newsItem._id} className="hover:bg-gray-50">
+                  <tr key={newsItem._id.toString()} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-12 w-12 rounded-lg overflow-hidden bg-gray-200">
@@ -369,14 +369,14 @@ const NewsPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex items-center space-x-2">
                         <button
-                          onClick={() => router.push(`/admin/news/${newsItem._id}`)}
+                          onClick={() => router.push(`/admin/news/${newsItem._id.toString()}`)}
                           className="text-blue-600 hover:text-blue-900 transition-colors"
                           title="Ver noticia"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
                         <button
-                          onClick={() => router.push(`/admin/news/${newsItem._id}/edit`)}
+                          onClick={() => router.push(`/admin/news/${newsItem._id.toString()}/edit`)}
                           className="text-indigo-600 hover:text-indigo-900 transition-colors"
                           title="Editar noticia"
                         >

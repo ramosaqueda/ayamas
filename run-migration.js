@@ -8,7 +8,8 @@
 const { spawn } = require('child_process')
 const path = require('path')
 
-console.log('🚀 Iniciando proceso de migración de categorías...\n')
+console.log('🚀 Iniciando proceso de migración de categorías...
+')
 
 // Determinar si es rollback
 const isRollback = process.argv.includes('--rollback')
@@ -25,7 +26,8 @@ if (isRollback) {
   args.push('--rollback')
 }
 
-console.log(`🔧 Comando: npx ${args.join(' ')}\n`)
+console.log(`🔧 Comando: npx ${args.join(' ')}
+`)
 
 // Ejecutar el script
 const child = spawn('npx', args, {
@@ -35,17 +37,20 @@ const child = spawn('npx', args, {
 })
 
 child.on('close', (code) => {
-  console.log(`\n✅ Proceso completado con código: ${code}`)
+  console.log(`
+✅ Proceso completado con código: ${code}`)
   
   if (code === 0) {
     console.log('🎉 ¡Migración ejecutada exitosamente!')
-    console.log('\n📝 Próximos pasos:')
+    console.log('
+📝 Próximos pasos:')
     console.log('   1. Verifica la aplicación en /admin/categories')
     console.log('   2. Prueba crear/editar productos')
     console.log('   3. Confirma que las categorías funcionan correctamente')
   } else {
     console.log('❌ Error durante la migración')
-    console.log('\n🔄 Si necesitas revertir, ejecuta:')
+    console.log('
+🔄 Si necesitas revertir, ejecuta:')
     console.log('   node run-migration.js --rollback')
   }
 })
