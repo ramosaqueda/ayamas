@@ -32,11 +32,11 @@ export async function POST(request: NextRequest) {
     console.log(`🎯 backgroundOpacity en esquema: ${hasBackgroundOpacity}`)
 
     if (hasBackgroundOpacity) {
-      const opacityPath = paths.backgroundOpacity
+      const opacityPath = (paths as any).backgroundOpacity
       console.log('📋 Configuración de backgroundOpacity:', {
         type: opacityPath.instance,
         required: opacityPath.isRequired,
-        default: opacityPath.defaultValue,
+        default: (opacityPath as any).defaultValue || opacityPath.options?.default,
         min: opacityPath.options?.min,
         max: opacityPath.options?.max
       })
@@ -55,8 +55,8 @@ export async function POST(request: NextRequest) {
 
     console.log('🧪 Documento de prueba creado:', {
       title: testSlide.title,
-      backgroundOpacity: testSlide.backgroundOpacity,
-      hasBackgroundOpacity: testSlide.backgroundOpacity !== undefined
+      backgroundOpacity: (testSlide as any).backgroundOpacity,
+      hasBackgroundOpacity: (testSlide as any).backgroundOpacity !== undefined
     })
 
     // Obtener estadísticas de la colección actual
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       modelInfo: {
         schemaFields,
         hasBackgroundOpacityInSchema: hasBackgroundOpacity,
-        testDocumentOpacity: testSlide.backgroundOpacity
+        testDocumentOpacity: (testSlide as any).backgroundOpacity
       },
       collectionStats: {
         totalSlides,
@@ -80,13 +80,13 @@ export async function POST(request: NextRequest) {
       }
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('❌ Error reiniciando modelo:', error)
     return NextResponse.json(
       {
         success: false,
         message: 'Error al reiniciar modelo',
-        error: error instanceof Error ? error.message : 'Error desconocido'
+        error: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido'
       },
       { status: 500 }
     )
@@ -109,20 +109,20 @@ export async function GET(request: NextRequest) {
         schemaFields,
         hasBackgroundOpacity: 'backgroundOpacity' in paths,
         backgroundOpacityConfig: paths.backgroundOpacity ? {
-          type: paths.backgroundOpacity.instance,
-          required: paths.backgroundOpacity.isRequired,
-          default: paths.backgroundOpacity.defaultValue
+          type: (paths as any).backgroundOpacity.instance,
+          required: (paths as any).backgroundOpacity.isRequired,
+          default: ((paths as any).backgroundOpacity as any).defaultValue || (paths as any).backgroundOpacity.options?.default
         } : null
       }
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error obteniendo info del modelo:', error)
     return NextResponse.json(
       {
         success: false,
         message: 'Error al obtener información del modelo',
-        error: error instanceof Error ? error.message : 'Error desconocido'
+        error: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido'
       },
       { status: 500 }
     )

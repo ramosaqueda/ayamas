@@ -13,7 +13,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs'
 export default function ProductDetailPage() {
   const params = useParams()
   const router = useRouter()
-  const { product, loading, error } = useProductDetail(params.id as string)
+  const { product, loading, error } = useProductDetail(params.id?.toString() || '')
   const { products: allProducts } = useProducts()
 
   const handleQuoteRequest = () => {
@@ -128,9 +128,9 @@ Gracias.`
                     Destacado
                   </span>
                 )}
-                {product.badge && (
+                {(product as any).badge && (
                   <span className="bg-neutral-800 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {product.badge}
+                    {(product as any).badge}
                   </span>
                 )}
               </div>
@@ -183,9 +183,9 @@ Gracias.`
                   <h1 className="text-3xl font-bold text-neutral-800 mb-2">
                     {product.title}
                   </h1>
-                  {product.subtitle && (
+                  {(product as any).subtitle && (
                     <p className="text-xl text-neutral-600 mb-4">
-                      {product.subtitle}
+                      {(product as any).subtitle}
                     </p>
                   )}
                   <span className="inline-block bg-neutral-100 text-neutral-700 px-3 py-1 rounded-full text-sm font-medium capitalize">

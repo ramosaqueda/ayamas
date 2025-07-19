@@ -16,7 +16,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     await connectDB()
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(params.id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de producto inválido' },
         { status: 400 }
@@ -37,7 +37,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
       data: product
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching product:', error)
     return NextResponse.json(
       { success: false, message: 'Error al obtener producto' },
@@ -52,7 +52,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     await connectDB()
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(params.id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de producto inválido' },
         { status: 400 }
@@ -73,7 +73,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     }
 
     // Validar que la categoría exista
-    if (!mongoose.Types.ObjectId.isValid(body.category)) {
+    if (!mongoose.Types.ObjectId.isValid(body.category?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de categoría no válido' },
         { status: 400 }
@@ -89,7 +89,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     }
 
     // Validar que tenga al menos una característica
-    if (!body.features || !Array.isArray(body.features) || body.features.filter(f => f.trim()).length === 0) {
+    if (!body.features || !Array.isArray(body.features) || body.features.filter((f: string) => f.trim()).length === 0) {
       return NextResponse.json(
         { success: false, message: 'Debe tener al menos una característica' },
         { status: 400 }
@@ -154,7 +154,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     await connectDB()
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(params.id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de producto inválido' },
         { status: 400 }
@@ -175,7 +175,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
       message: 'Producto eliminado exitosamente'
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error deleting product:', error)
     return NextResponse.json(
       { success: false, message: 'Error al eliminar producto' },

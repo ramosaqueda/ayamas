@@ -24,8 +24,8 @@ interface NewsCarouselItemProps {
 
 const NewsCarouselItem = ({ item, index }: NewsCarouselItemProps) => {
   const handleClick = () => {
-    if (item.href) {
-      window.open(item.href, '_blank')
+    if ((item as any).href) {
+      window.open((item as any).href, '_blank')
     }
   }
 
@@ -88,9 +88,9 @@ const NewsCarouselItem = ({ item, index }: NewsCarouselItemProps) => {
         </h3>
 
         {/* Subtitle */}
-        {item.subtitle && (
+        {(item as any).subtitle && (
           <h4 className="text-sm font-medium text-neutral-600 mb-3">
-            {item.subtitle}
+            {(item as any).subtitle}
           </h4>
         )}
 

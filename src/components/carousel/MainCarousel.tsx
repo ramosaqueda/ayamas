@@ -9,6 +9,11 @@ import { getIcon } from '@/lib/iconUtils'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+// Type guard para verificar si un slide tiene propiedades de imagen
+const hasBackgroundImage = (slide: any): slide is ICarouselSlide & { backgroundImage: string; backgroundOpacity: number } => {
+  return 'backgroundImage' in slide;
+}
+
 const MainCarousel = () => {
   const { slides, loading, error } = useCarouselSlides(true)
   const router = useRouter()
@@ -115,11 +120,11 @@ const MainCarousel = () => {
   const renderSlide = (slide: ICarouselSlide | typeof fallbackSlides[0]) => (
     <div className="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
       {/* Imagen de fondo */}
-      {slide.backgroundImage && (
+      {hasBackgroundImage(slide) && (slide as any).backgroundImage && (
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url(${slide.backgroundImage})`
+            backgroundImage: `url(${(slide as any).backgroundImage})`
           }}
         />
       )}
@@ -128,8 +133,8 @@ const MainCarousel = () => {
       <div
         className={`absolute inset-0 bg-gradient-to-br ${slide.backgroundColor}`}
         style={{
-          opacity: slide.backgroundImage
-            ? (1 - (slide.backgroundOpacity || 0.2))
+          opacity: hasBackgroundImage(slide) && slide.backgroundImage
+            ? (1 - ((slide as any).backgroundOpacity || 0.2))
             : 1
         }}
       />
@@ -148,18 +153,18 @@ const MainCarousel = () => {
             className="space-y-8"
           >
             {/* Badge */}
-            {slide.badge && (
+            {(slide as any).badge && (
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="inline-block"
               >
-                <span className={`px-4 py-2 rounded-full text-sm font-bold ${slide.badge.includes('OFF')
+                <span className={`px-4 py-2 rounded-full text-sm font-bold ${(slide as any).badge.includes('OFF')
                   ? 'bg-red-500 text-white'
                   : 'bg-secondary-500 text-neutral-800'
                   }`}>
-                  {slide.badge}
+                  {(slide as any).badge}
                 </span>
               </motion.div>
             )}
@@ -174,14 +179,14 @@ const MainCarousel = () => {
               >
                 {slide.title}
               </motion.h1>
-              {slide.subtitle && (
+              {(slide as any).subtitle && (
                 <motion.h2
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-xl md:text-2xl text-secondary-500 font-semibold"
                 >
-                  {slide.subtitle}
+                  {(slide as any).subtitle}
                 </motion.h2>
               )}
               <motion.p
@@ -221,7 +226,7 @@ const MainCarousel = () => {
                 onClick={(e) => {
                   e.preventDefault()
                   e.stopPropagation()
-                  handleNavigation(slide.ctaUrl || slide.href)
+                  handleNavigation((slide as any).ctaUrl || (slide as any).href)
                 }}
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg font-semibold flex items-center gap-2 group relative z-20 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 style={{ pointerEvents: 'auto' }}
@@ -229,38 +234,38 @@ const MainCarousel = () => {
                 <span>{slide.ctaText}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              {slide.ctaSecondary && (
+              {(slide as any).ctaSecondary && (
                 <button 
                   onClick={(e) => {
                     e.preventDefault()
                     e.stopPropagation()
-                    handleNavigation(slide.ctaSecondaryUrl || slide.href)
+                    handleNavigation((slide as any).ctaSecondaryUrl || (slide as any).href)
                   }}
                   className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold relative z-20 rounded-lg transition-all duration-300 backdrop-blur-sm"
                   style={{ pointerEvents: 'auto' }}
                 >
-                  {slide.ctaSecondary}
+                  {(slide as any).ctaSecondary}
                 </button>
               )}
             </motion.div>
 
             {/* Stats */}
-            {(slide.stats?.rating || slide.stats?.clients) && (
+            {((slide as any).stats?.rating || (slide as any).stats?.clients) && (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
                 className="flex items-center gap-6 text-white/90"
               >
-                {slide.stats.rating && (
+                {(slide as any).stats?.rating && (
                   <div className="flex items-center gap-2">
                     <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                    <span className="font-semibold">{slide.stats.rating}</span>
+                    <span className="font-semibold">{(slide as any).stats.rating}</span>
                   </div>
                 )}
-                {slide.stats.clients && (
+                {(slide as any).stats?.clients && (
                   <div className="text-sm">
-                    <span className="font-semibold">{slide.stats.clients}</span> clientes confían en nosotros
+                    <span className="font-semibold">{(slide as any).stats.clients}</span> clientes confían en nosotros
                   </div>
                 )}
               </motion.div>

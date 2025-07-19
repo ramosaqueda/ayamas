@@ -31,6 +31,12 @@ export interface ICarouselSlide extends Document {
   updatedAt: Date
 }
 
+// Interfaz para los métodos estáticos del modelo
+interface ICarouselSlideModel extends Model<ICarouselSlide> {
+  findActive(): any
+  reorderSlides(slideIds: string[]): any
+}
+
 // Schema de Mongoose para Slide del Carrusel
 const CarouselSlideSchema = new Schema<ICarouselSlide>({
   title: {
@@ -163,7 +169,7 @@ CarouselSlideSchema.pre('save', function(next) {
   }
   
   // Limpiar arrays de strings vacíos
-  this.features = this.features.filter(feature => feature.trim().length > 0)
+  this.features = this.features.filter((feature: string) => feature.trim().length > 0)
   
   // Limitar a máximo 4 características para el carrusel
   if (this.features.length > 4) {
@@ -191,6 +197,6 @@ CarouselSlideSchema.statics.reorderSlides = async function(slideIds: string[]) {
 }
 
 // Crear el modelo o usar el existente
-const CarouselSlide: Model<ICarouselSlide> = mongoose.models?.CarouselSlide || mongoose.model<ICarouselSlide>('CarouselSlide', CarouselSlideSchema)
+const CarouselSlide: ICarouselSlideModel = mongoose.models?.CarouselSlide || mongoose.model<ICarouselSlide, ICarouselSlideModel>('CarouselSlide', CarouselSlideSchema)
 
 export default CarouselSlide

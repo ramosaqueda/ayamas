@@ -51,7 +51,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ news, isEditing = false }) => {
     if (news) {
       setFormData({
         title: news.title || '',
-        subtitle: news.subtitle || '',
+        subtitle: (news as any).subtitle || '',
         description: news.description || '',
         content: news.content || '',
         image: news.image || '',
@@ -64,7 +64,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ news, isEditing = false }) => {
         publishedAt: news.publishedAt ? new Date(news.publishedAt).toISOString().split('T')[0] : '',
         slug: news.slug || '',
         tags: news.tags || [],
-        href: news.href || '',
+        href: (news as any).href || '',
         seoTitle: news.seoTitle || '',
         seoDescription: news.seoDescription || ''
       })
@@ -387,7 +387,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ news, isEditing = false }) => {
                       type="url"
                       id="href"
                       name="href"
-                      value={formData.href}
+                      value={(formData as any).href}
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="https://ejemplo.com"

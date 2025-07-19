@@ -15,7 +15,7 @@ export async function GET(
     const { id } = params
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de categoría no válido' },
         { status: 400 }
@@ -36,7 +36,7 @@ export async function GET(
       success: true,
       data: category
     })
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching category:', error)
     return NextResponse.json(
       { success: false, message: 'Error al obtener categoría' },
@@ -57,7 +57,7 @@ export async function PUT(
     const body = await request.json()
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de categoría no válido' },
         { status: 400 }
@@ -138,7 +138,7 @@ export async function DELETE(
     const { id } = params
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de categoría no válido' },
         { status: 400 }
@@ -172,7 +172,7 @@ export async function DELETE(
       message: 'Categoría eliminada exitosamente'
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error deleting category:', error)
     return NextResponse.json(
       { success: false, message: 'Error interno del servidor' },

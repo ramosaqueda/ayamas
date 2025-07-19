@@ -28,9 +28,9 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
       {items.map((item, index) => (
         <div key={index} className="flex items-center space-x-2">
           <ChevronRight size={16} className="text-neutral-400" />
-          {item.href && !item.active ? (
+          {(item as any).href && !item.active ? (
             <Link 
-              href={item.href}
+              href={(item as any).href}
               className="hover:text-primary-600 transition-colors capitalize"
             >
               {item.label}

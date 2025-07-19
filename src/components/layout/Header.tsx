@@ -47,7 +47,7 @@ const Header = () => {
             {navItems.map((item) => (
               <Link
                 key={item.name}
-                href={item.href}
+                href={(item as any).href}
                 className="text-neutral-700 hover:text-primary-500 font-medium transition-colors duration-300 relative group"
               >
                 {item.name}
@@ -80,7 +80,7 @@ const Header = () => {
               {navItems.map((item) => (
                 <Link
                   key={item.name}
-                  href={item.href}
+                  href={(item as any).href}
                   className="block py-2 text-neutral-700 hover:text-primary-500 font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >

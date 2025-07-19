@@ -189,9 +189,9 @@ const DiagnosticTool = () => {
                 </h5>
                 <div className="text-xs text-gray-600 space-y-1">
                   <div>Éxito: {results.test.success ? 'Sí' : 'No'}</div>
-                  <div>backgroundOpacity enviado: {results.test.sentData.backgroundOpacity}</div>
+                  <div>backgroundOpacity enviado: {(results.test.sentData as any).backgroundOpacity}</div>
                   {results.test.data.data && (
-                    <div>backgroundOpacity guardado: {results.test.data.data.backgroundOpacity || 'NO GUARDADO'}</div>
+                    <div>backgroundOpacity guardado: {(results.test.data.data as any).backgroundOpacity || 'NO GUARDADO'}</div>
                   )}
                   {results.test.data.message && (
                     <div>Mensaje: {results.test.data.message}</div>

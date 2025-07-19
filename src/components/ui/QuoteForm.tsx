@@ -38,7 +38,7 @@ const QuoteForm = () => {
       // Aquí iría la lógica real de envío
       // Por ejemplo: enviar a una API, servicio de email, etc.
       
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error al enviar:', error)
       setSubmitStatus('error')
     } finally {

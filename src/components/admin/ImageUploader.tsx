@@ -47,7 +47,7 @@ export default function ImageUploader({
       
       // Para URLs externas, intentar cargar la imagen
       return new Promise((resolve) => {
-        const img = new Image()
+        const img = document.createElement('img')
         
         const timeout = setTimeout(() => {
           img.onload = null
@@ -115,7 +115,7 @@ export default function ImageUploader({
       } else {
         throw new Error(data.message || 'Error al procesar la imagen')
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error uploading image:', error)
       alert('Error al subir la imagen. Inténtalo de nuevo.')
       setImageError(true)

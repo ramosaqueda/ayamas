@@ -65,12 +65,22 @@ const ProductDetailPage = () => {
     }
   }
 
-  const getCategoryLabel = (category: ICategory | string) => {
+  const getCategoryLabel = (category: any): string => {
+    // Si es null o undefined
+    if (!category) {
+      return 'Sin categoría'
+    }
+    
+    // Si es un objeto con propiedad name (ICategory o PopulatedDoc)
     if (typeof category === 'object' && category?.name) {
       return category.name
     }
+    
+    // Si es un ObjectId, convertir a string y buscar en legacy
+    const categoryStr = category.toString ? category.toString() : String(category)
+    
     // Fallback para categorías legacy
-    const legacyCategories = {
+    const legacyCategories: { [key: string]: string } = {
       personal: 'Personal',
       empresarial: 'Empresarial', 
       salud: 'Salud',
@@ -78,7 +88,8 @@ const ProductDetailPage = () => {
       obligatorios: 'Obligatorios',
       condominios: 'Condominios'
     }
-    return legacyCategories[category as keyof typeof legacyCategories] || category
+    
+    return legacyCategories[categoryStr] || categoryStr || 'Sin categoría'
   }
 
   const formatDate = (date: string | Date) => {
@@ -186,9 +197,9 @@ const ProductDetailPage = () => {
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">
                     {product.title}
                   </h2>
-                  {product.subtitle && (
+                  {(product as any).subtitle && (
                     <h3 className="text-lg text-gray-600 mb-3">
-                      {product.subtitle}
+                      {(product as any).subtitle}
                     </h3>
                   )}
                   <p className="text-gray-700 leading-relaxed">
@@ -258,24 +269,24 @@ const ProductDetailPage = () => {
             </div>
 
             {/* Enlaces e Imagen */}
-            {(product.href || product.image) && (
+            {((product as any).href || product.image) && (
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   Recursos Adicionales
                 </h3>
                 <div className="space-y-4">
-                  {product.href && (
+                  {(product as any).href && (
                     <div>
                       <label className="block text-sm font-medium text-gray-500 mb-1">
                         Enlace
                       </label>
                       <a 
-                        href={product.href}
+                        href={(product as any).href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:text-blue-800 underline break-all"
                       >
-                        {product.href}
+                        {(product as any).href}
                       </a>
                     </div>
                   )}
@@ -364,11 +375,11 @@ const ProductDetailPage = () => {
                   </span>
                 </div>
                 
-                {product.badge && (
+                {(product as any).badge && (
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-gray-500">Badge</span>
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                      {product.badge}
+                      {(product as any).badge}
                     </span>
                   </div>
                 )}
@@ -387,7 +398,7 @@ const ProductDetailPage = () => {
                     ID del Producto
                   </label>
                   <code className="text-xs bg-gray-100 px-2 py-1 rounded font-mono break-all">
-                    {product._id}
+                    {product._id.toString()}
                   </code>
                 </div>
                 

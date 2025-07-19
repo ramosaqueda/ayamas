@@ -86,7 +86,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
       const statField = field.split('.')[1]
       setFormData(prev => ({
         ...prev,
-        stats: { ...prev.stats, [statField]: value }
+        stats: { ...(prev as any).stats, [statField]: value }
       }))
     } else {
       setFormData(prev => ({ ...prev, [field]: value }))
@@ -117,19 +117,19 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
     if (!formData.description.trim()) return 'La descripción es obligatoria'
     if (!formData.ctaText.trim()) return 'El texto del CTA principal es obligatorio'
     // CTA secundario ya no es obligatorio
-    if (formData.features.filter(f => f.trim()).length === 0) return 'Debe tener al menos una característica'
-    if (formData.stats.rating !== undefined && (formData.stats.rating < 1 || formData.stats.rating > 5)) return 'La calificación debe estar entre 1 y 5'
-    if (formData.backgroundOpacity < 0 || formData.backgroundOpacity > 1) return 'La opacidad debe estar entre 0 y 1'
+    if (formData.features.filter((f: string) => f.trim()).length === 0) return 'Debe tener al menos una característica'
+    if ((formData as any).stats.rating !== undefined && ((formData as any).stats.rating < 1 || (formData as any).stats.rating > 5)) return 'La calificación debe estar entre 1 y 5'
+    if ((formData as any).backgroundOpacity < 0 || (formData as any).backgroundOpacity > 1) return 'La opacidad debe estar entre 0 y 1'
     
     // Validar URLs si se proporcionan
     const urlPattern = /^(https?:\/\/|\/).*$/
-    if (formData.ctaUrl && !urlPattern.test(formData.ctaUrl)) {
+    if ((formData as any).ctaUrl && !urlPattern.test((formData as any).ctaUrl)) {
       return 'La URL del CTA principal debe comenzar con http://, https:// o /'
     }
-    if (formData.ctaSecondaryUrl && !urlPattern.test(formData.ctaSecondaryUrl)) {
+    if ((formData as any).ctaSecondaryUrl && !urlPattern.test((formData as any).ctaSecondaryUrl)) {
       return 'La URL del CTA secundario debe comenzar con http://, https:// o /'
     }
-    if (formData.href && !urlPattern.test(formData.href)) {
+    if ((formData as any).href && !urlPattern.test((formData as any).href)) {
       return 'El enlace debe comenzar con http://, https:// o /'
     }
     
@@ -151,8 +151,8 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
     try {
       const cleanedData = {
         ...formData,
-        features: formData.features.filter(feature => feature.trim().length > 0).slice(0, 4),
-        backgroundOpacity: formData.backgroundOpacity // Asegurar que siempre se incluya
+        features: formData.features.filter((feature: string) => feature.trim().length > 0).slice(0, 4),
+        backgroundOpacity: (formData as any).backgroundOpacity // Asegurar que siempre se incluya
       }
 
       const url = isEditing ? `/api/carousel/${slide?._id}` : '/api/carousel'
@@ -216,11 +216,11 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
             
             <div className="relative rounded-lg overflow-hidden h-64 text-white">
               {/* Imagen de fondo */}
-              {formData.backgroundImage && (
+              {(formData as any).backgroundImage && (
                 <div 
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ 
-                    backgroundImage: `url(${formData.backgroundImage})`
+                    backgroundImage: `url(${(formData as any).backgroundImage})`
                   }}
                 />
               )}
@@ -229,20 +229,20 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
               <div 
                 className={`absolute inset-0 bg-gradient-to-br ${formData.backgroundColor}`}
                 style={{
-                  opacity: formData.backgroundImage ? (1 - formData.backgroundOpacity) : 1
+                  opacity: formData.backgroundImage ? (1 - (formData as any).backgroundOpacity) : 1
                 }}
               />
               
               <div className="relative h-full p-6 flex flex-col justify-between">
                 <div>
-                  {formData.badge && (
+                  {(formData as any).badge && (
                     <span className="inline-block bg-white bg-opacity-20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
-                      {formData.badge}
+                      {(formData as any).badge}
                     </span>
                   )}
                   <h3 className="text-xl font-bold mb-2">{formData.title || 'Título del slide'}</h3>
-                  {formData.subtitle && (
-                    <p className="text-sm opacity-90 mb-2">{formData.subtitle}</p>
+                  {(formData as any).subtitle && (
+                    <p className="text-sm opacity-90 mb-2">{(formData as any).subtitle}</p>
                   )}
                   <p className="text-sm opacity-80">{formData.description || 'Descripción del slide'}</p>
                 </div>
@@ -255,18 +255,18 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                     </div>
                   )}
                   
-                  {(formData.stats.rating || formData.stats.clients) && (
+                  {((formData as any).stats.rating || (formData as any).stats.clients) && (
                     <div className={`${formData.price ? 'text-right' : 'text-left'}`}>
-                      {formData.stats.rating && (
+                      {(formData as any).stats.rating && (
                         <div className="flex items-center text-sm mb-1">
                           <Star className="w-4 h-4 mr-1 fill-current" />
-                          {formData.stats.rating}
+                          {(formData as any).stats.rating}
                         </div>
                       )}
-                      {formData.stats.clients && (
+                      {(formData as any).stats.clients && (
                         <div className="flex items-center text-sm">
                           <Users className="w-4 h-4 mr-1" />
-                          {formData.stats.clients}
+                          {(formData as any).stats.clients}
                         </div>
                       )}
                     </div>
@@ -300,7 +300,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                 </label>
                 <input
                   type="text"
-                  value={formData.subtitle}
+                  value={(formData as any).subtitle}
                   onChange={(e) => handleInputChange('subtitle', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Subtítulo opcional"
@@ -392,17 +392,17 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
               <div>
                 <ImageUploader
                   label="Imagen de Fondo"
-                  value={formData.backgroundImage}
+                  value={(formData as any).backgroundImage}
                   onChange={(url) => handleInputChange('backgroundImage', url)}
                   className=""
                 />
               </div>
             </div>
 
-            {formData.backgroundImage && (
+            {(formData as any).backgroundImage && (
               <div className="mt-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Transparencia de la Imagen: {Math.round(formData.backgroundOpacity * 100)}%
+                  Transparencia de la Imagen: {Math.round((formData as any).backgroundOpacity * 100)}%
                 </label>
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-gray-500">0%</span>
@@ -411,7 +411,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                     min="0"
                     max="1"
                     step="0.05"
-                    value={formData.backgroundOpacity}
+                    value={(formData as any).backgroundOpacity}
                     onChange={(e) => handleInputChange('backgroundOpacity', parseFloat(e.target.value))}
                     className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                   />
@@ -472,7 +472,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                   </label>
                   <input
                     type="text"
-                    value={formData.ctaUrl}
+                    value={(formData as any).ctaUrl}
                     onChange={(e) => handleInputChange('ctaUrl', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="/productos/id o https://ejemplo.com"
@@ -491,7 +491,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                   </label>
                   <input
                     type="text"
-                    value={formData.ctaSecondary}
+                    value={(formData as any).ctaSecondary}
                     onChange={(e) => handleInputChange('ctaSecondary', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Más Información (opcional)"
@@ -503,7 +503,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                   </label>
                   <input
                     type="text"
-                    value={formData.ctaSecondaryUrl}
+                    value={(formData as any).ctaSecondaryUrl}
                     onChange={(e) => handleInputChange('ctaSecondaryUrl', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="/acerca-de o https://ejemplo.com"
@@ -522,7 +522,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                   </label>
                   <input
                     type="text"
-                    value={formData.badge}
+                    value={(formData as any).badge}
                     onChange={(e) => handleInputChange('badge', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="NUEVO, POPULAR, etc."
@@ -550,7 +550,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                 </label>
                 <input
                   type="text"
-                  value={formData.href}
+                  value={(formData as any).href}
                   onChange={(e) => handleInputChange('href', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="/categoria/destacados o https://ejemplo.com"
@@ -582,7 +582,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                   min="1"
                   max="5"
                   step="0.1"
-                  value={formData.stats.rating || ''}
+                  value={(formData as any).stats.rating || ''}
                   onChange={(e) => handleInputChange('stats.rating', e.target.value ? parseFloat(e.target.value) : undefined)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="4.8 (opcional)"
@@ -595,7 +595,7 @@ const CarouselForm = ({ slide, isEditing = false }: CarouselFormProps) => {
                 </label>
                 <input
                   type="text"
-                  value={formData.stats.clients}
+                  value={(formData as any).stats.clients}
                   onChange={(e) => handleInputChange('stats.clients', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="10K+ (opcional)"

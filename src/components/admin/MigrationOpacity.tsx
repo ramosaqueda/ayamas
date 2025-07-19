@@ -250,7 +250,7 @@ const MigrationOpacity = () => {
                     {debugInfo.slideDetails.map((slide: any) => (
                       <div key={slide._id.toString()} className="text-xs bg-white p-2 rounded border">
                         <div><strong>{slide.title}</strong></div>
-                        <div>Opacidad: {slide.hasBackgroundOpacity ? slide.backgroundOpacity : 'NO DEFINIDA'}</div>
+                        <div>Opacidad: {slide.hasBackgroundOpacity ? (slide as any).backgroundOpacity : 'NO DEFINIDA'}</div>
                         <div>Imagen: {slide.backgroundImage ? 'Sí' : 'No'}</div>
                       </div>
                     ))}

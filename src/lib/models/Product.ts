@@ -26,6 +26,13 @@ export interface IProduct extends Document {
   updatedAt: Date
 }
 
+// Interfaz para los métodos estáticos del modelo
+interface IProductModel extends Model<IProduct> {
+  findByCategory(categoryId: string): any
+  findFeatured(): any
+  findPopular(): any
+}
+
 // Schema de Mongoose para Producto
 const ProductSchema = new Schema<IProduct>({
   title: {
@@ -131,7 +138,7 @@ ProductSchema.pre('save', function(next) {
   }
   
   // Limpiar arrays de strings vacíos
-  this.features = this.features.filter(feature => feature.trim().length > 0)
+  this.features = this.features.filter((feature: string) => feature.trim().length > 0)
   
   next()
 })
@@ -158,6 +165,6 @@ ProductSchema.statics.findPopular = function() {
 }
 
 // Crear el modelo o usar el existente
-const Product: Model<IProduct> = mongoose.models?.Product || mongoose.model<IProduct>('Product', ProductSchema)
+const Product: IProductModel = mongoose.models?.Product || mongoose.model<IProduct, IProductModel>('Product', ProductSchema)
 
 export default Product

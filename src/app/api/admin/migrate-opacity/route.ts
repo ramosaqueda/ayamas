@@ -44,13 +44,13 @@ export async function POST(request: NextRequest) {
       totalSlides: await CarouselSlide.countDocuments()
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error en migración de opacidad:', error)
     return NextResponse.json(
       {
         success: false,
         message: 'Error al ejecutar la migración',
-        error: error instanceof Error ? error.message : 'Error desconocido'
+        error: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido'
       },
       { status: 500 }
     )
@@ -81,13 +81,13 @@ export async function GET(request: NextRequest) {
       }
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error al verificar estado de migración:', error)
     return NextResponse.json(
       {
         success: false,
         message: 'Error al verificar el estado',
-        error: error instanceof Error ? error.message : 'Error desconocido'
+        error: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido'
       },
       { status: 500 }
     )

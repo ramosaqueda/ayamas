@@ -77,7 +77,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             {navigation.map((item) => (
               <Link
                 key={item.name}
-                href={item.href}
+                href={(item as any).href}
                 className={`flex items-center px-6 py-3 text-sm font-medium transition-colors ${
                   item.current
                     ? 'bg-primary-50 text-primary-600 border-r-2 border-primary-600'
@@ -103,7 +103,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             {navigation.map((item) => (
               <Link
                 key={item.name}
-                href={item.href}
+                href={(item as any).href}
                 className={`flex items-center px-6 py-3 text-sm font-medium transition-colors ${
                   item.current
                     ? 'bg-primary-50 text-primary-600 border-r-2 border-primary-600'

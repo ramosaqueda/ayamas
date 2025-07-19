@@ -12,6 +12,12 @@ export interface ICategory extends Document {
   updatedAt: Date
 }
 
+// Interfaz para los métodos estáticos del modelo
+interface ICategoryModel extends Model<ICategory> {
+  findActive(): any
+  findBySlug(slug: string): any
+}
+
 // Schema de Mongoose para Categoría
 const CategorySchema = new Schema<ICategory>({
   name: {
@@ -76,6 +82,6 @@ CategorySchema.statics.findBySlug = function(slug: string) {
 }
 
 // Crear el modelo o usar el existente
-const Category: Model<ICategory> = mongoose.models?.Category || mongoose.model<ICategory>('Category', CategorySchema)
+const Category: ICategoryModel = mongoose.models?.Category || mongoose.model<ICategory, ICategoryModel>('Category', CategorySchema)
 
 export default Category

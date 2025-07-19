@@ -15,7 +15,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     await connectDB()
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(params.id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de slide inválido' },
         { status: 400 }
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
       data: slide
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching carousel slide:', error)
     return NextResponse.json(
       { success: false, message: 'Error al obtener slide' },
@@ -51,7 +51,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     await connectDB()
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(params.id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de slide inválido' },
         { status: 400 }
@@ -72,7 +72,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     }
 
     // Validar que tenga al menos una característica
-    if (!body.features || !Array.isArray(body.features) || body.features.filter(f => f.trim()).length === 0) {
+    if (!body.features || !Array.isArray(body.features) || body.features.filter((f: string) => f.trim()).length === 0) {
       return NextResponse.json(
         { success: false, message: 'Debe tener al menos una característica' },
         { status: 400 }
@@ -80,9 +80,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     }
 
     // Validar stats solo si se proporcionan
-    if (body.stats && typeof body.stats === 'object') {
+    if ((body as any).stats && typeof (body as any).stats === 'object') {
       // Validar rating solo si se proporciona
-      if (body.stats.rating !== undefined && (body.stats.rating < 1 || body.stats.rating > 5)) {
+      if ((body as any).stats.rating !== undefined && ((body as any).stats.rating < 1 || (body as any).stats.rating > 5)) {
         return NextResponse.json(
           { success: false, message: 'La calificación debe estar entre 1 y 5' },
           { status: 400 }
@@ -91,7 +91,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     }
 
     // Validar opacidad
-    if (body.backgroundOpacity !== undefined && (body.backgroundOpacity < 0 || body.backgroundOpacity > 1)) {
+    if ((body as any).backgroundOpacity !== undefined && ((body as any).backgroundOpacity < 0 || (body as any).backgroundOpacity > 1)) {
       return NextResponse.json(
         { success: false, message: 'La opacidad debe estar entre 0 y 1' },
         { status: 400 }
@@ -106,7 +106,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
       description: body.description.trim(),
       price: body.price ? body.price.trim() : undefined,
       ctaText: body.ctaText.trim(),
-      ctaSecondary: body.ctaSecondary.trim(),
+      ctaSecondary: (body as any).ctaSecondary.trim(),
       backgroundOpacity: body.backgroundOpacity ?? 0.2, // Valor por defecto
       updatedAt: new Date()
     }
@@ -160,7 +160,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     await connectDB()
 
     // Validar ObjectId
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(params.id?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de slide inválido' },
         { status: 400 }
@@ -181,7 +181,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
       message: 'Slide eliminado exitosamente'
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error deleting carousel slide:', error)
     return NextResponse.json(
       { success: false, message: 'Error al eliminar slide' },

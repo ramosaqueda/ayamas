@@ -71,7 +71,7 @@ async function migrateCategories() {
     let skippedCount = 0
 
     for (const product of products) {
-      const categorySlug = product.category as string
+      const categorySlug = product.category?.toString() || ''
       
       // Verificar si ya es un ObjectId (ya migrado)
       if (typeof categorySlug === 'object' || categorySlug.toString().length === 24) {
@@ -145,7 +145,7 @@ async function migrateCategories() {
     console.log(`   • ${skippedCount} productos omitidos (ya migrados)`)
     console.log(`   • ${validCategoryCount}/${totalProducts} productos con categorías válidas`)
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('❌ Error durante la migración:', error)
     throw error
   }
@@ -193,7 +193,7 @@ async function rollbackMigration() {
     console.log(`
 🎉 Rollback completado: ${revertedCount} productos revertidos`)
     
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('❌ Error durante el rollback:', error)
     throw error
   }

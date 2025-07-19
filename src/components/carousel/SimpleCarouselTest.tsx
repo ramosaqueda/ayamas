@@ -48,7 +48,7 @@ const SimpleCarouselTest = () => {
               e.preventDefault()
               e.stopPropagation()
               console.log('Click en CTA principal')
-              handleNavigation(testSlide.ctaUrl)
+              handleNavigation((testSlide as any).ctaUrl)
             }}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all"
           >
@@ -61,17 +61,17 @@ const SimpleCarouselTest = () => {
               e.preventDefault()
               e.stopPropagation()
               console.log('Click en CTA secundario')
-              handleNavigation(testSlide.ctaSecondaryUrl)
+              handleNavigation((testSlide as any).ctaSecondaryUrl)
             }}
             className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all"
           >
-            {testSlide.ctaSecondary}
+            {(testSlide as any).ctaSecondary}
           </button>
         </div>
         
         <div className="text-sm opacity-80 mt-4">
-          <p>CTA Principal: {testSlide.ctaUrl}</p>
-          <p>CTA Secundario: {testSlide.ctaSecondaryUrl}</p>
+          <p>CTA Principal: {(testSlide as any).ctaUrl}</p>
+          <p>CTA Secundario: {(testSlide as any).ctaSecondaryUrl}</p>
         </div>
       </div>
     </div>

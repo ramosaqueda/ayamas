@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
         pages: Math.ceil(total / limitNumber)
       }
     })
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching carousel slides:', error)
     return NextResponse.json(
       { success: false, message: 'Error al obtener slides del carrusel' },
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validar que tenga al menos una característica
-    if (!body.features || !Array.isArray(body.features) || body.features.filter(f => f.trim()).length === 0) {
+    if (!body.features || !Array.isArray(body.features) || body.features.filter((f: string) => f.trim()).length === 0) {
       return NextResponse.json(
         { success: false, message: 'Debe tener al menos una característica' },
         { status: 400 }
@@ -77,9 +77,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Validar stats solo si se proporcionan
-    if (body.stats && typeof body.stats === 'object') {
+    if ((body as any).stats && typeof (body as any).stats === 'object') {
       // Validar rating solo si se proporciona
-      if (body.stats.rating !== undefined && (body.stats.rating < 1 || body.stats.rating > 5)) {
+      if ((body as any).stats.rating !== undefined && ((body as any).stats.rating < 1 || (body as any).stats.rating > 5)) {
         return NextResponse.json(
           { success: false, message: 'La calificación debe estar entre 1 y 5' },
           { status: 400 }
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validar opacidad
-    if (body.backgroundOpacity !== undefined && (body.backgroundOpacity < 0 || body.backgroundOpacity > 1)) {
+    if ((body as any).backgroundOpacity !== undefined && ((body as any).backgroundOpacity < 0 || (body as any).backgroundOpacity > 1)) {
       return NextResponse.json(
         { success: false, message: 'La opacidad debe estar entre 0 y 1' },
         { status: 400 }
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
       description: body.description.trim(),
       price: body.price ? body.price.trim() : undefined,
       ctaText: body.ctaText.trim(),
-      ctaSecondary: body.ctaSecondary.trim(),
+      ctaSecondary: (body as any).ctaSecondary.trim(),
       backgroundOpacity: body.backgroundOpacity ?? 0.2 // Valor por defecto
     }
 
@@ -166,7 +166,7 @@ export async function PUT(request: NextRequest) {
       message: 'Slides reordenados exitosamente'
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error reordering slides:', error)
     return NextResponse.json(
       { success: false, message: 'Error al reordenar slides' },

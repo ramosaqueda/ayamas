@@ -39,7 +39,7 @@ export async function GET(
       data: news
     })
     
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching news by ID:', error)
     return NextResponse.json(
       { 
@@ -199,7 +199,7 @@ export async function DELETE(
       message: 'Noticia eliminada exitosamente'
     })
     
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error deleting news:', error)
     return NextResponse.json(
       { 

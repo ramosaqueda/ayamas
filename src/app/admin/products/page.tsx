@@ -58,7 +58,7 @@ const ProductsPage = () => {
             setCategories(data.data)
           }
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error loading categories:', error)
       }
     }

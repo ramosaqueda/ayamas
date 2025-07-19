@@ -98,7 +98,7 @@ const CarouselPage = () => {
       setSlides(newOrder.map((slide, index) => ({
         _id: slide._id,
         title: slide.title,
-        subtitle: slide.subtitle,
+        subtitle: (slide as any).subtitle,
         description: slide.description,
         price: slide.price,
         originalPrice: slide.originalPrice,
@@ -106,16 +106,16 @@ const CarouselPage = () => {
         discount: slide.discount,
         features: slide.features,
         backgroundColor: slide.backgroundColor,
-        backgroundImage: slide.backgroundImage,
-        backgroundOpacity: slide.backgroundOpacity,
-        badge: slide.badge,
+        backgroundImage: (slide as any).backgroundImage,
+        backgroundOpacity: (slide as any).backgroundOpacity,
+        badge: (slide as any).badge,
         icon: slide.icon,
         ctaText: slide.ctaText,
-        ctaUrl: slide.ctaUrl,
-        ctaSecondary: slide.ctaSecondary,
-        ctaSecondaryUrl: slide.ctaSecondaryUrl,
-        href: slide.href,
-        stats: slide.stats,
+        ctaUrl: (slide as any).ctaUrl,
+        ctaSecondary: (slide as any).ctaSecondary,
+        ctaSecondaryUrl: (slide as any).ctaSecondaryUrl,
+        href: (slide as any).href,
+        stats: (slide as any).stats,
         active: slide.active,
         order: index,
         createdAt: slide.createdAt,
@@ -281,11 +281,11 @@ const CarouselPage = () => {
                     <div className="flex-shrink-0">
                       <div className="relative w-20 h-12 rounded overflow-hidden flex items-center justify-center text-white text-xs font-semibold">
                         {/* Imagen de fondo */}
-                        {slide.backgroundImage && (
+                        {(slide as any).backgroundImage && (
                           <div 
                             className="absolute inset-0 bg-cover bg-center"
                             style={{ 
-                              backgroundImage: `url(${slide.backgroundImage})`
+                              backgroundImage: `url(${(slide as any).backgroundImage})`
                             }}
                           />
                         )}
@@ -294,7 +294,7 @@ const CarouselPage = () => {
                         <div 
                           className={`absolute inset-0 bg-gradient-to-br ${slide.backgroundColor}`}
                           style={{
-                            opacity: slide.backgroundImage ? (1 - (slide.backgroundOpacity || 0.2)) : 1
+                            opacity: slide.backgroundImage ? (1 - ((slide as any).backgroundOpacity || 0.2)) : 1
                           }}
                         />
                         
@@ -308,9 +308,9 @@ const CarouselPage = () => {
                         <h3 className="text-sm font-medium text-gray-900 truncate">
                           {slide.title}
                         </h3>
-                        {slide.badge && (
+                        {(slide as any).badge && (
                           <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">
-                            {slide.badge}
+                            {(slide as any).badge}
                           </span>
                         )}
                       </div>
@@ -319,15 +319,15 @@ const CarouselPage = () => {
                       </p>
                       <div className="flex items-center space-x-4 mt-2 text-xs text-gray-400">
                         <span>{slide.price} {slide.period}</span>
-                        {slide.stats && (
+                        {(slide as any).stats && (
                           <>
                             <span className="flex items-center">
                               <Star className="w-3 h-3 mr-1" />
-                              {slide.stats.rating}
+                              {(slide as any).stats.rating}
                             </span>
                             <span className="flex items-center">
                               <Users className="w-3 h-3 mr-1" />
-                              {slide.stats.clients}
+                              {(slide as any).stats.clients}
                             </span>
                           </>
                         )}

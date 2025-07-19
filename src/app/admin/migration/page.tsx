@@ -34,10 +34,10 @@ const MigrationPage = () => {
         message: data.message || (data.success ? 'Operación completada' : 'Error en la operación'),
         type: action
       })
-    } catch (error) {
+    } catch (error: unknown) {
       setResult({
         success: false,
-        message: error instanceof Error ? error.message : 'Error desconocido',
+        message: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido',
         type: action
       })
     } finally {

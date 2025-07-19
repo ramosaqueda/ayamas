@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
         pages: Math.ceil(total / limitNumber)
       }
     })
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching categories:', error)
     return NextResponse.json(
       { success: false, message: 'Error al obtener categorías' },

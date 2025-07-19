@@ -12,7 +12,7 @@ const EditNewsPage = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const newsId = params.id as string
+  const newsId = params.id?.toString() || ''
 
   useEffect(() => {
     const fetchNews = async () => {

@@ -46,13 +46,13 @@ export async function GET(request: NextRequest) {
       }))
     })
     
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Debug error:', error)
     return NextResponse.json(
       { 
         success: false, 
         error: 'Error en debug',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Unknown error'
       },
       { status: 500 }
     )

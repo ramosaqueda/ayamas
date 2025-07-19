@@ -20,13 +20,13 @@ export async function POST(request: NextRequest) {
         message: 'Migración de categorías ejecutada exitosamente'
       })
     }
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error en migración:', error)
     return NextResponse.json(
       { 
         success: false, 
         message: 'Error al ejecutar la migración',
-        error: error instanceof Error ? error.message : 'Error desconocido'
+        error: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido'
       },
       { status: 500 }
     )

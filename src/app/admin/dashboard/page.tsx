@@ -93,7 +93,7 @@ const Dashboard = () => {
       }
       
       setStats(dashboardStats)
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error fetching dashboard stats:', error)
     } finally {
       setLoading(false)
@@ -189,7 +189,7 @@ const Dashboard = () => {
         {statCards.map((card) => (
           <Link
             key={card.title}
-            href={card.href}
+            href={(card as any).href}
             className="bg-white rounded-lg shadow-sm border border-neutral-200 p-6 hover:shadow-md transition-shadow"
           >
             <div className="flex items-center">
@@ -199,7 +199,7 @@ const Dashboard = () => {
               <div className="ml-4">
                 <p className="text-sm font-medium text-neutral-600">{card.title}</p>
                 <p className="text-2xl font-bold text-neutral-900">{card.total}</p>
-                <p className="text-xs text-neutral-500">{card.subtitle}</p>
+                <p className="text-xs text-neutral-500">{(card as any).subtitle}</p>
               </div>
             </div>
           </Link>
@@ -214,7 +214,7 @@ const Dashboard = () => {
             {quickActions.map((action) => (
               <Link
                 key={action.title}
-                href={action.href}
+                href={(action as any).href}
                 className={`flex items-center p-4 rounded-lg text-white transition-colors ${action.color}`}
               >
                 <action.icon className="w-5 h-5 mr-3" />

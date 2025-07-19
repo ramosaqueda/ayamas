@@ -168,18 +168,18 @@ const CarouselSlideDetailPage = () => {
               </div>
               
               <div className={`relative h-80 bg-gradient-to-br ${slide.backgroundColor} text-white`}>
-                {slide.backgroundImage && (
+                {(slide as any).backgroundImage && (
                   <div 
                     className="absolute inset-0 bg-cover bg-center opacity-20"
-                    style={{ backgroundImage: `url(${slide.backgroundImage})` }}
+                    style={{ backgroundImage: `url(${(slide as any).backgroundImage})` }}
                   />
                 )}
                 
                 <div className="relative h-full p-8 flex flex-col justify-between">
                   <div>
-                    {slide.badge && (
+                    {(slide as any).badge && (
                       <span className="inline-block bg-white bg-opacity-20 text-white text-sm font-semibold px-4 py-2 rounded-full mb-4">
-                        {slide.badge}
+                        {(slide as any).badge}
                       </span>
                     )}
                     <div className="flex items-start space-x-4 mb-4">
@@ -190,8 +190,8 @@ const CarouselSlideDetailPage = () => {
                       )}
                       <div className="flex-1">
                         <h1 className="text-3xl font-bold mb-2">{slide.title}</h1>
-                        {slide.subtitle && (
-                          <p className="text-lg opacity-90 mb-3">{slide.subtitle}</p>
+                        {(slide as any).subtitle && (
+                          <p className="text-lg opacity-90 mb-3">{(slide as any).subtitle}</p>
                         )}
                         <p className="text-base opacity-80">{slide.description}</p>
                       </div>
@@ -213,15 +213,15 @@ const CarouselSlideDetailPage = () => {
                     </div>
                     
                     <div className="text-right">
-                      {slide.stats && (
+                      {(slide as any).stats && (
                         <>
                           <div className="flex items-center text-lg mb-2">
                             <Star className="w-5 h-5 mr-2 fill-current" />
-                            {slide.stats.rating}
+                            {(slide as any).stats.rating}
                           </div>
                           <div className="flex items-center text-lg">
                             <Users className="w-5 h-5 mr-2" />
-                            {slide.stats.clients}
+                            {(slide as any).stats.clients}
                           </div>
                         </>
                       )}
@@ -259,30 +259,30 @@ const CarouselSlideDetailPage = () => {
                     {slide.ctaText}
                   </button>
                 )}
-                {slide.ctaSecondary && (
+                {(slide as any).ctaSecondary && (
                   <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-                    {slide.ctaSecondary}
+                    {(slide as any).ctaSecondary}
                   </button>
                 )}
-                {!slide.ctaText && !slide.ctaSecondary && (
+                {!slide.ctaText && !(slide as any).ctaSecondary && (
                   <p className="text-gray-500 italic">No hay botones de acción configurados</p>
                 )}
               </div>
             </div>
 
             {/* Enlaces */}
-            {slide.href && (
+            {(slide as any).href && (
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   Enlace de Destino
                 </h3>
                 <a 
-                  href={slide.href}
+                  href={(slide as any).href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline break-all"
                 >
-                  {slide.href}
+                  {(slide as any).href}
                 </a>
               </div>
             )}
@@ -347,13 +347,13 @@ const CarouselSlideDetailPage = () => {
                   </div>
                 </div>
 
-                {slide.backgroundImage && (
+                {(slide as any).backgroundImage && (
                   <div>
                     <label className="block text-sm font-medium text-gray-500 mb-1">
                       Imagen de Fondo
                     </label>
                     <img 
-                      src={slide.backgroundImage} 
+                      src={(slide as any).backgroundImage} 
                       alt="Background"
                       className="w-full h-24 object-cover rounded"
                       onError={(e) => {
@@ -361,7 +361,7 @@ const CarouselSlideDetailPage = () => {
                       }}
                     />
                     <p className="text-xs text-gray-500 mt-1 break-all">
-                      {slide.backgroundImage}
+                      {(slide as any).backgroundImage}
                     </p>
                   </div>
                 )}

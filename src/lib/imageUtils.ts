@@ -22,7 +22,7 @@ export function compressImage(
 
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
-    const img = new Image()
+    const img = document.createElement("img")
 
     img.onload = () => {
       // Calcular nuevas dimensiones manteniendo proporción
@@ -84,7 +84,7 @@ export function validateImageDimensions(
   maxHeight = Infinity
 ): Promise<boolean> {
   return new Promise((resolve) => {
-    const img = new Image()
+    const img = document.createElement("img")
     
     img.onload = () => {
       const { width, height } = img
@@ -105,7 +105,7 @@ export function validateImageDimensions(
 // Función para obtener dimensiones de imagen
 export function getImageDimensions(file: File): Promise<{ width: number; height: number }> {
   return new Promise((resolve, reject) => {
-    const img = new Image()
+    const img = document.createElement("img")
     
     img.onload = () => {
       resolve({ width: img.width, height: img.height })

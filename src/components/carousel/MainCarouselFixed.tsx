@@ -84,11 +84,11 @@ const MainCarouselFixed = () => {
     <section className="relative w-full">
       <div className="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
         {/* Imagen de fondo */}
-        {currentSlide.backgroundImage && (
+        {(currentSlide as any).backgroundImage && (
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url(${currentSlide.backgroundImage})`
+              backgroundImage: `url(${(currentSlide as any).backgroundImage})`
             }}
           />
         )}
@@ -97,8 +97,8 @@ const MainCarouselFixed = () => {
         <div
           className={`absolute inset-0 bg-gradient-to-br ${currentSlide.backgroundColor}`}
           style={{
-            opacity: currentSlide.backgroundImage
-              ? (1 - (currentSlide.backgroundOpacity || 0.2))
+            opacity: (currentSlide as any).backgroundImage
+              ? (1 - ((currentSlide as any).backgroundOpacity || 0.2))
               : 1
           }}
         />
@@ -108,14 +108,14 @@ const MainCarouselFixed = () => {
             {/* Content */}
             <div className="space-y-8">
               {/* Badge */}
-              {currentSlide.badge && (
+              {(currentSlide as any).badge && (
                 <div className="inline-block">
                   <span className={`px-4 py-2 rounded-full text-sm font-bold ${
-                    currentSlide.badge.includes('OFF')
+                    (currentSlide as any).badge.includes('OFF')
                       ? 'bg-red-500 text-white'
                       : 'bg-yellow-400 text-gray-800'
                   }`}>
-                    {currentSlide.badge}
+                    {(currentSlide as any).badge}
                   </span>
                 </div>
               )}
@@ -125,9 +125,9 @@ const MainCarouselFixed = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                   {currentSlide.title}
                 </h1>
-                {currentSlide.subtitle && (
+                {(currentSlide as any).subtitle && (
                   <h2 className="text-xl md:text-2xl text-yellow-400 font-semibold">
-                    {currentSlide.subtitle}
+                    {(currentSlide as any).subtitle}
                   </h2>
                 )}
                 <p className="text-lg text-white/90 max-w-xl leading-relaxed">
@@ -151,8 +151,8 @@ const MainCarouselFixed = () => {
                   onClick={(e) => {
                     e.preventDefault()
                     e.stopPropagation()
-                    console.log('🚀 Click en CTA principal:', currentSlide.ctaUrl)
-                    handleNavigation(currentSlide.ctaUrl || currentSlide.href)
+                    console.log('🚀 Click en CTA principal:', (currentSlide as any).ctaUrl)
+                    handleNavigation((currentSlide as any).ctaUrl || (currentSlide as any).href)
                   }}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg font-semibold flex items-center gap-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
@@ -160,33 +160,33 @@ const MainCarouselFixed = () => {
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 
-                {currentSlide.ctaSecondary && (
+                {(currentSlide as any).ctaSecondary && (
                   <button 
                     onClick={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
-                      console.log('🚀 Click en CTA secundario:', currentSlide.ctaSecondaryUrl)
-                      handleNavigation(currentSlide.ctaSecondaryUrl || currentSlide.href)
+                      console.log('🚀 Click en CTA secundario:', (currentSlide as any).ctaSecondaryUrl)
+                      handleNavigation((currentSlide as any).ctaSecondaryUrl || (currentSlide as any).href)
                     }}
                     className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
                   >
-                    {currentSlide.ctaSecondary}
+                    {(currentSlide as any).ctaSecondary}
                   </button>
                 )}
               </div>
 
               {/* Stats */}
-              {(currentSlide.stats?.rating || currentSlide.stats?.clients) && (
+              {((currentSlide as any).stats?.rating || (currentSlide as any).stats?.clients) && (
                 <div className="flex items-center gap-6 text-white/90">
-                  {currentSlide.stats.rating && (
+                  {(currentSlide as any).stats?.rating && (
                     <div className="flex items-center gap-2">
                       <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                      <span className="font-semibold">{currentSlide.stats.rating}</span>
+                      <span className="font-semibold">{(currentSlide as any).stats.rating}</span>
                     </div>
                   )}
-                  {currentSlide.stats.clients && (
+                  {(currentSlide as any).stats?.clients && (
                     <div className="text-sm">
-                      <span className="font-semibold">{currentSlide.stats.clients}</span> clientes confían en nosotros
+                      <span className="font-semibold">{(currentSlide as any).stats.clients}</span> clientes confían en nosotros
                     </div>
                   )}
                 </div>
@@ -194,9 +194,9 @@ const MainCarouselFixed = () => {
 
               {/* Debug Info */}
               <div className="text-xs text-white/60 bg-black/20 p-2 rounded mt-4">
-                <p>🔗 CTA Principal: {currentSlide.ctaUrl || 'No definido'}</p>
-                <p>🔗 CTA Secundario: {currentSlide.ctaSecondaryUrl || 'No definido'}</p>
-                <p>🔗 Href respaldo: {currentSlide.href || 'No definido'}</p>
+                <p>🔗 CTA Principal: {(currentSlide as any).ctaUrl || 'No definido'}</p>
+                <p>🔗 CTA Secundario: {(currentSlide as any).ctaSecondaryUrl || 'No definido'}</p>
+                <p>🔗 Href respaldo: {(currentSlide as any).href || 'No definido'}</p>
               </div>
             </div>
           </div>

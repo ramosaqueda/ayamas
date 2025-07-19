@@ -13,7 +13,7 @@ const NewsDetailPage = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const newsId = params.id as string
+  const newsId = params.id?.toString() || ''
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -179,8 +179,8 @@ const NewsDetailPage = () => {
                     </span>
                   </div>
                   <h1 className="text-3xl font-bold text-gray-900 mb-2">{news.title}</h1>
-                  {news.subtitle && (
-                    <p className="text-xl text-gray-600 mb-4">{news.subtitle}</p>
+                  {(news as any).subtitle && (
+                    <p className="text-xl text-gray-600 mb-4">{(news as any).subtitle}</p>
                   )}
                   <p className="text-gray-700 text-lg leading-relaxed">{news.description}</p>
                 </div>
@@ -254,7 +254,7 @@ const NewsDetailPage = () => {
                     URL
                   </label>
                   <p className="text-blue-600 bg-gray-50 p-3 rounded border font-mono text-sm">
-                    {news.href || `/noticias/${news.slug}`}
+                    {(news as any).href || `/noticias/${news.slug}`}
                   </p>
                 </div>
               </div>
@@ -342,16 +342,16 @@ const NewsDetailPage = () => {
                   <span className="text-sm text-gray-600">Slug:</span>
                   <span className="text-sm text-gray-900 font-mono">{news.slug}</span>
                 </div>
-                {news.href && (
+                {(news as any).href && (
                   <div className="flex justify-between">
                     <span className="text-sm text-gray-600">URL externa:</span>
                     <a 
-                      href={news.href} 
+                      href={(news as any).href} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-sm text-blue-600 hover:text-blue-800 truncate max-w-32"
                     >
-                      {news.href}
+                      {(news as any).href}
                     </a>
                   </div>
                 )}

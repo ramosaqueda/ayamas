@@ -24,6 +24,13 @@ export interface INews extends Document {
   updatedAt: Date
 }
 
+// Interfaz para los métodos estáticos del modelo
+interface INewsModel extends Model<INews> {
+  findByCategory(category: string): any
+  findFeatured(): any
+  search(query: string): any
+}
+
 // Schema de Mongoose para Noticia
 const NewsSchema = new Schema<INews>({
   title: {
@@ -129,7 +136,7 @@ NewsSchema.index({ tags: 1 })
 
 // Virtual para la URL completa
 NewsSchema.virtual('fullUrl').get(function() {
-  return this.href || `/noticias/${this.slug}`
+  return (this as any).href || `/noticias/${this.slug}`
 })
 
 // Middleware pre-save para generar slug automáticamente
@@ -200,6 +207,6 @@ NewsSchema.statics.search = function(query: string) {
 }
 
 // Crear el modelo o usar el existente
-const News: Model<INews> = mongoose.models?.News || mongoose.model<INews>('News', NewsSchema)
+const News: INewsModel = mongoose.models?.News || mongoose.model<INews, INewsModel>('News', NewsSchema)
 
 export default News

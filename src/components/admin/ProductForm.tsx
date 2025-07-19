@@ -67,17 +67,17 @@ const ProductForm = ({ product, isEditing = false }: ProductFormProps) => {
           if (data.success) {
             setCategories(data.data)
             
-            // Si es edición y el producto tiene categoría, obtener el ID
+            // Si es edición y el producto tiene categoría, obtener el ID como string
             if (isEditing && product?.category) {
               if (typeof product.category === 'object' && product.category._id) {
-                setFormData(prev => ({ ...prev, category: product.category._id }))
+                setFormData(prev => ({ ...prev, category: product.category._id.toString() }))
               } else if (typeof product.category === 'string') {
-                setFormData(prev => ({ ...prev, category: product.category }))
+                setFormData(prev => ({ ...prev, category: product.category?.toString() || '' }))
               }
             }
           }
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error fetching categories:', error)
         setError('Error al cargar las categorías')
       } finally {
@@ -114,7 +114,7 @@ const ProductForm = ({ product, isEditing = false }: ProductFormProps) => {
     if (!formData.description.trim()) return 'La descripción es obligatoria'
     if (!formData.price.trim()) return 'El precio es obligatorio'
     if (!formData.category) return 'La categoría es obligatoria'
-    if (formData.features.filter(f => f.trim()).length === 0) return 'Debe tener al menos una característica'
+    if (formData.features.filter((f: string) => f.trim()).length === 0) return 'Debe tener al menos una característica'
     return null
   }
 
@@ -138,7 +138,7 @@ const ProductForm = ({ product, isEditing = false }: ProductFormProps) => {
       // Limpiar features vacías
       const cleanedData = {
         ...formData,
-        features: formData.features.filter(feature => feature.trim().length > 0)
+        features: formData.features.filter((feature: string) => feature.trim().length > 0)
       }
       
       // Debug: Log de los datos limpiados
@@ -237,7 +237,7 @@ const ProductForm = ({ product, isEditing = false }: ProductFormProps) => {
                 </label>
                 <input
                   type="text"
-                  value={formData.subtitle}
+                  value={(formData as any).subtitle}
                   onChange={(e) => handleInputChange('subtitle', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Subtítulo opcional"
@@ -310,13 +310,13 @@ const ProductForm = ({ product, isEditing = false }: ProductFormProps) => {
                   Categoría *
                 </label>
                 <select
-                  value={formData.category}
+                  value={typeof formData.category === 'object' && formData.category?._id ? formData.category._id.toString() : formData.category?.toString() || ''}
                   onChange={(e) => handleInputChange('category', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="">Seleccionar categoría</option>
                   {categories.map(cat => (
-                    <option key={cat._id.toString()} value={cat._id}>{cat.name}</option>
+                    <option key={cat._id.toString()} value={cat._id.toString()}>{cat.name}</option>
                   ))}
                 </select>
               </div>
@@ -471,7 +471,7 @@ const ProductForm = ({ product, isEditing = false }: ProductFormProps) => {
                 </label>
                 <input
                   type="text"
-                  value={formData.badge}
+                  value={(formData as any).badge}
                   onChange={(e) => handleInputChange('badge', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="NUEVO, POPULAR, etc."
@@ -497,7 +497,7 @@ const ProductForm = ({ product, isEditing = false }: ProductFormProps) => {
                 </label>
                 <input
                   type="text"
-                  value={formData.href}
+                  value={(formData as any).href}
                   onChange={(e) => handleInputChange('href', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="https://ejemplo.com (opcional)"

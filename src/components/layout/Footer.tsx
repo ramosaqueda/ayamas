@@ -86,7 +86,7 @@ const Footer = () => {
               {productLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    href={(link as any).href}
                     className="text-neutral-300 hover:text-white transition-colors duration-300"
                   >
                     {link.name}
@@ -103,7 +103,7 @@ const Footer = () => {
               {companyLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    href={(link as any).href}
                     className="text-neutral-300 hover:text-white transition-colors duration-300"
                   >
                     {link.name}
@@ -120,7 +120,7 @@ const Footer = () => {
               {supportLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    href={(link as any).href}
                     className="text-neutral-300 hover:text-white transition-colors duration-300"
                   >
                     {link.name}
@@ -205,7 +205,7 @@ const Footer = () => {
               {socialLinks.map((social) => (
                 <Link
                   key={social.name}
-                  href={social.href}
+                  href={(social as any).href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-400 hover:text-white transition-colors duration-300"

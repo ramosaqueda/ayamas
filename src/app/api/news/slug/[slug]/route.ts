@@ -48,7 +48,7 @@ export async function GET(
       data: news
     })
     
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching news by slug:', error)
     return NextResponse.json(
       { 

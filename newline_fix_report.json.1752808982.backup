@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-17T23:23:02.973853",
+  "timestamp": "2025-07-17T23:17:59.851055",
   "stats": {
     "files_processed": 140,
     "files_fixed": 1,
@@ -475,7 +475,7 @@
         "Fixed JSON strings with literal \\\\n"
       ],
       "errors": [],
-      "backup_path": "newline_fix_report.json.1752808982.backup",
+      "backup_path": "newline_fix_report.json.1752808679.backup",
       "problems_detected": [
         {
           "type": "broken_console",
@@ -3415,52 +3415,52 @@
         {
           "type": "string_with_literal_newline",
           "line": 2328,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"        \\\\\\\"Fixed literal \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n in string..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 2333,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    fixed = fixed.repl..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 2338,
           "content": "          \"content\": \"          \\\"content\\\": \\\"        \\\\\\\"Fixed JSON strings with literal \\\\\\\\\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 3418,
+          "line": 2348,
           "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"        \\\\\\\\\\\\\\\"Fixed ..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 3463,
+          "line": 2353,
           "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"        \\\\\\\\\\\\\\\"Fixed ..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 3768,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "line": 2958,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"        \\\\\\\\\\\\\\\"Fixed ..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 3773,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "line": 2963,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"        \\\\\\\\\\\\\\\"Fixed ..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 3568,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"        \\\\\\\\\\\\\\\"Fixed ..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3778,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 3783,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 3788,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 3793,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"        \\\\\\\\\\\\\\\"Fixed ..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3798,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"        \\\\\\\"Fixed basic literal \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n\\\\\\\"..."
         },
         {
           "type": "string_with_literal_newline",
@@ -3580,37 +3580,37 @@
         {
           "type": "string_with_literal_newline",
           "line": 3918,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3923,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3928,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3933,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3938,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3943,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3948,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
@@ -3640,37 +3640,37 @@
         {
           "type": "string_with_literal_newline",
           "line": 3978,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3983,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3988,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3993,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 3998,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4003,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4008,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"      console.log('\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
@@ -3700,451 +3700,516 @@
         {
           "type": "string_with_literal_newline",
           "line": 4038,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4043,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4048,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4053,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4058,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4063,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4068,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log('\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4073,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log(`\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4078,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log(`\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4083,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log(`\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4088,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log(`\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4093,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log(`\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4098,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"          \\\\\\\"content\\\\\\\": \\\\\\\"    console.log(`\\\\\\\\\\..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4103,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
         },
         {
-          "type": "broken_console",
-          "line": 4068,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4068,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4073,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4073,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4078,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4078,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4083,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4083,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4088,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4088,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4093,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4093,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4098,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4098,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4103,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 4103,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4108,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
           "type": "string_with_literal_newline",
           "line": 4108,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4113,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4113,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4118,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4118,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
-        },
-        {
-          "type": "broken_console",
-          "line": 4123,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4123,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4128,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcdd Paso 1: Creando ..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4133,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4133,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4138,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4138,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4143,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4143,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4148,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4148,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4153,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4153,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4158,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4158,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udce6 Paso 2: Actualiz..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4163,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4163,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4168,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4168,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4173,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4173,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4178,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4178,
-          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4183,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 4183,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+        },
+        {
+          "type": "broken_console",
+          "line": 4188,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4188,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udd0d Paso 3: Verifica..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4193,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4198,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4203,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4208,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4213,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4218,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\ud83c\\\\udf89 \\\\u00a1Migraci..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4223,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4228,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4233,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4238,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4243,
+          "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 4248,
           "content": "          \"content\": \"          \\\"content\\\": \\\"      console.log('\\\\\\\\n\\\\u26a0\\\\ufe0f  Migraci\\\\u00f..."
         },
         {
           "type": "broken_console",
-          "line": 4188,
+          "line": 4253,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 4188,
+          "line": 4253,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "broken_console",
-          "line": 4193,
+          "line": 4258,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 4193,
+          "line": 4258,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "broken_console",
-          "line": 4198,
+          "line": 4263,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 4198,
+          "line": 4263,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "broken_console",
-          "line": 4203,
+          "line": 4268,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 4203,
+          "line": 4268,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "broken_console",
-          "line": 4208,
+          "line": 4273,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 4208,
+          "line": 4273,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "broken_console",
-          "line": 4213,
+          "line": 4278,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
         },
         {
           "type": "string_with_literal_newline",
-          "line": 4213,
+          "line": 4278,
           "content": "          \"content\": \"          \\\"content\\\": \\\"    console.log('\\\\\\\\n\\\\ud83d\\\\udcca Resumen de la mi..."
-        },
-        {
-          "type": "broken_console",
-          "line": 5203,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5203,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
-        },
-        {
-          "type": "broken_console",
-          "line": 5208,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5208,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
-        },
-        {
-          "type": "broken_console",
-          "line": 5213,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5213,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
-        },
-        {
-          "type": "broken_console",
-          "line": 5218,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5218,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
-        },
-        {
-          "type": "broken_console",
-          "line": 5223,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5223,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
-        },
-        {
-          "type": "broken_console",
-          "line": 5228,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5228,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
-        },
-        {
-          "type": "broken_console",
-          "line": 5233,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5233,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
-        },
-        {
-          "type": "broken_console",
-          "line": 5238,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5238,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
-        },
-        {
-          "type": "broken_console",
-          "line": 5243,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5243,
-          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
-        },
-        {
-          "type": "broken_console",
-          "line": 5248,
-          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5248,
-          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
-        },
-        {
-          "type": "broken_console",
-          "line": 5253,
-          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5253,
-          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
-        },
-        {
-          "type": "broken_console",
-          "line": 5258,
-          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5258,
-          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
-        },
-        {
-          "type": "broken_console",
-          "line": 5263,
-          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
-        },
-        {
-          "type": "string_with_literal_newline",
-          "line": 5263,
-          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
         },
         {
           "type": "broken_console",
           "line": 5268,
-          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 5268,
-          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
         },
         {
           "type": "broken_console",
           "line": 5273,
-          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
         },
         {
           "type": "string_with_literal_newline",
           "line": 5273,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
+        },
+        {
+          "type": "broken_console",
+          "line": 5278,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5278,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcdd Paso 1: Creando categor\\u00edas en la nueva c..."
+        },
+        {
+          "type": "broken_console",
+          "line": 5283,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5283,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
+        },
+        {
+          "type": "broken_console",
+          "line": 5288,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5288,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
+        },
+        {
+          "type": "broken_console",
+          "line": 5293,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5293,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udce6 Paso 2: Actualizando productos existentes')\""
+        },
+        {
+          "type": "broken_console",
+          "line": 5298,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5298,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
+        },
+        {
+          "type": "broken_console",
+          "line": 5303,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5303,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
+        },
+        {
+          "type": "broken_console",
+          "line": 5308,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5308,
+          "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udd0d Paso 3: Verificando integridad de datos')\""
+        },
+        {
+          "type": "broken_console",
+          "line": 5313,
+          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5313,
+          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
+        },
+        {
+          "type": "broken_console",
+          "line": 5318,
+          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5318,
+          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
+        },
+        {
+          "type": "broken_console",
+          "line": 5323,
+          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5323,
+          "content": "          \"content\": \"      console.log('\\\\n\\ud83c\\udf89 \\u00a1Migraci\\u00f3n completada exitosament..."
+        },
+        {
+          "type": "broken_console",
+          "line": 5328,
+          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5328,
           "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
         },
         {
           "type": "broken_console",
-          "line": 5278,
+          "line": 5333,
+          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5333,
+          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+        },
+        {
+          "type": "broken_console",
+          "line": 5338,
+          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+        },
+        {
+          "type": "string_with_literal_newline",
+          "line": 5338,
+          "content": "          \"content\": \"      console.log('\\\\n\\u26a0\\ufe0f  Migraci\\u00f3n completada con advertencias..."
+        },
+        {
+          "type": "broken_console",
+          "line": 5343,
           "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcca Resumen de la migraci\\u00f3n:')\""
         },
         {
           "type": "string_with_literal_newline",
-          "line": 5278,
+          "line": 5343,
           "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcca Resumen de la migraci\\u00f3n:')\""
         },
         {
           "type": "broken_console",
-          "line": 5283,
+          "line": 5348,
           "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcca Resumen de la migraci\\u00f3n:')\""
         },
         {
           "type": "string_with_literal_newline",
-          "line": 5283,
+          "line": 5348,
           "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcca Resumen de la migraci\\u00f3n:')\""
         },
         {
           "type": "broken_console",
-          "line": 5288,
+          "line": 5353,
           "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcca Resumen de la migraci\\u00f3n:')\""
         },
         {
           "type": "string_with_literal_newline",
-          "line": 5288,
+          "line": 5353,
           "content": "          \"content\": \"    console.log('\\\\n\\ud83d\\udcca Resumen de la migraci\\u00f3n:')\""
         }
       ]

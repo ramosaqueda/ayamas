@@ -135,8 +135,8 @@ const NewsPage = () => {
   }
 
   const handleNewsClick = (newsItem: INews) => {
-    if (newsItem.href) {
-      window.open(newsItem.href, '_blank')
+    if ((newsItem as any).href) {
+      window.open((newsItem as any).href, '_blank')
     } else {
       router.push(`/noticias/${newsItem.slug}`)
     }
@@ -326,9 +326,9 @@ const NewsPage = () => {
                     <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                       {newsItem.title}
                     </h3>
-                    {newsItem.subtitle && (
+                    {(newsItem as any).subtitle && (
                       <p className="text-gray-600 text-sm mb-2">
-                        {newsItem.subtitle}
+                        {(newsItem as any).subtitle}
                       </p>
                     )}
                     <p className="text-gray-600 mb-4 line-clamp-3">

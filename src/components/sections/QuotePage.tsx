@@ -48,7 +48,7 @@ const QuoteSection = () => {
       
       // Aquí iría la lógica real de envío
       
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error al enviar cotización:', error)
       setSubmitStatus('error')
     } finally {
@@ -525,7 +525,7 @@ const QuoteSection = () => {
                         {selectedDescription.title}
                       </h3>
                       <p className="text-primary-600 font-semibold">
-                        {selectedDescription.subtitle}
+                        {(selectedDescription as any).subtitle}
                       </p>
                     </div>
                   </div>

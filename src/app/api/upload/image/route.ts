@@ -81,13 +81,13 @@ export async function POST(request: NextRequest) {
       type: file.type
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error detallado al subir imagen:', error)
     return NextResponse.json(
       { 
         success: false, 
         message: 'Error interno del servidor al procesar la imagen',
-        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        error: process.env.NODE_ENV === 'development' ? (error instanceof Error ? (error instanceof Error ? error.message : String(error)) : String(error)) : undefined
       },
       { status: 500 }
     )
@@ -113,7 +113,7 @@ export async function DELETE(request: NextRequest) {
     try {
       const fs = require('fs').promises
       await fs.unlink(filePath)
-    } catch (error) {
+    } catch (error: unknown) {
       // Archivo no existe o ya fue eliminado
     }
 
@@ -122,7 +122,7 @@ export async function DELETE(request: NextRequest) {
       message: 'Imagen eliminada exitosamente'
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error deleting image:', error)
     return NextResponse.json(
       { success: false, message: 'Error interno del servidor' },

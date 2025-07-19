@@ -39,7 +39,7 @@ const Contact = () => {
 
       // Aquí iría la lógica real de envío
 
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error al enviar:', error)
       setSubmitStatus('error')
     } finally {

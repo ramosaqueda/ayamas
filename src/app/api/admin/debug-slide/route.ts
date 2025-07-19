@@ -28,8 +28,8 @@ export async function POST(request: NextRequest) {
     console.log('🔍 Slide antes de actualizar:', JSON.stringify(slide, null, 2))
 
     // Actualizar el slide con backgroundOpacity si no lo tiene
-    if (slide.backgroundOpacity === undefined || slide.backgroundOpacity === null) {
-      slide.backgroundOpacity = 0.2
+    if ((slide as any).backgroundOpacity === undefined || (slide as any).backgroundOpacity === null) {
+      (slide as any).backgroundOpacity = 0.2
       await slide.save()
       console.log('✅ Slide actualizado con backgroundOpacity: 0.2')
     }
@@ -45,13 +45,13 @@ export async function POST(request: NextRequest) {
       after: updatedSlide
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error en debug-slide:', error)
     return NextResponse.json(
       {
         success: false,
         message: 'Error al depurar slide',
-        error: error instanceof Error ? error.message : 'Error desconocido'
+        error: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido'
       },
       { status: 500 }
     )
@@ -68,9 +68,9 @@ export async function GET(request: NextRequest) {
     const slideStatus = slides.map(slide => ({
       _id: slide._id,
       title: slide.title,
-      hasBackgroundOpacity: slide.backgroundOpacity !== undefined && slide.backgroundOpacity !== null,
-      backgroundOpacity: slide.backgroundOpacity,
-      backgroundImage: slide.backgroundImage
+      hasBackgroundOpacity: (slide as any).backgroundOpacity !== undefined && (slide as any).backgroundOpacity !== null,
+      backgroundOpacity: (slide as any).backgroundOpacity,
+      backgroundImage: (slide as any).backgroundImage
     }))
 
     return NextResponse.json({
@@ -81,13 +81,13 @@ export async function GET(request: NextRequest) {
       slideDetails: slideStatus
     })
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error al obtener estado de slides:', error)
     return NextResponse.json(
       {
         success: false,
         message: 'Error al obtener estado',
-        error: error instanceof Error ? error.message : 'Error desconocido'
+        error: error instanceof Error ? (error instanceof Error ? error.message : String(error)) : 'Error desconocido'
       },
       { status: 500 }
     )

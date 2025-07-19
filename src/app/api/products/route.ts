@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     if (category) {
       // Buscar categoría por slug o ID
       let categoryObj
-      if (mongoose.Types.ObjectId.isValid(category)) {
+      if (mongoose.Types.ObjectId.isValid(category?.toString())) {
         categoryObj = await Category.findById(category)
       } else {
         categoryObj = await Category.findOne({ slug: category })
@@ -60,13 +60,17 @@ export async function GET(request: NextRequest) {
     
     for (const product of products) {
       try {
-        // Si la categoría es ObjectId, intentar populate
-        if (mongoose.Types.ObjectId.isValid(product.category)) {
+        // Verificar si la categoría ya está poblada o es un ObjectId
+        if (product.category && typeof product.category === 'object' && 'name' in product.category) {
+          // La categoría ya está poblada
+          productsWithCategories.push(product)
+        } else if (product.category && mongoose.Types.ObjectId.isValid(product.category.toString())) {
+          // La categoría es un ObjectId, necesita populate
           const populatedProduct = await Product.findById(product._id).populate('category').lean()
           productsWithCategories.push(populatedProduct)
         } else {
-          // Si es string, buscar la categoría manualmente
-          const categorySlug = product.category as string
+          // Si es string u otro tipo, buscar la categoría manualmente
+          const categorySlug = product.category?.toString() || ''
           const categoryData = await Category.findOne({ slug: categorySlug }).lean()
           
           productsWithCategories.push({
@@ -79,15 +83,15 @@ export async function GET(request: NextRequest) {
             }
           })
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error(`Error poblando categoría para producto ${product._id}:`, error)
         // Agregar producto sin categoría poblada
         productsWithCategories.push({
           ...product,
           category: { 
             _id: null, 
-            name: product.category, 
-            slug: product.category, 
+            name: product.category?.toString() || 'Sin categoría', 
+            slug: product.category?.toString() || 'sin-categoria', 
             active: true 
           }
         })
@@ -107,7 +111,7 @@ export async function GET(request: NextRequest) {
         pages: Math.ceil(total / limitNumber)
       }
     })
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching products:', error)
     return NextResponse.json(
       { success: false, message: 'Error al obtener productos' },
@@ -135,7 +139,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validar que la categoría exista
-    if (!mongoose.Types.ObjectId.isValid(body.category)) {
+    if (!mongoose.Types.ObjectId.isValid(body.category?.toString())) {
       return NextResponse.json(
         { success: false, message: 'ID de categoría no válido' },
         { status: 400 }
@@ -151,7 +155,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validar que tenga al menos una característica
-    if (!body.features || !Array.isArray(body.features) || body.features.filter(f => f.trim()).length === 0) {
+    if (!body.features || !Array.isArray(body.features) || body.features.filter((f: string) => f.trim()).length === 0) {
       return NextResponse.json(
         { success: false, message: 'Debe tener al menos una característica' },
         { status: 400 }

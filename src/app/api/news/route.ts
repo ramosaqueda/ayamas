@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
       count: news.length
     })
     
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching news:', error)
     return NextResponse.json(
       { 

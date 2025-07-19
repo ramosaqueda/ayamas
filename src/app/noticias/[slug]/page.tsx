@@ -13,7 +13,7 @@ const NewsDetailPage = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const slug = params.slug as string
+  const slug = params.slug?.toString() || ''
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -60,7 +60,7 @@ const NewsDetailPage = () => {
           const data = await response.json()
           if (data.success) {
             // Filtrar la noticia actual
-            const related = data.data.filter((n: INews) => n._id !== currentId)
+            const related = data.data.filter((n: INews) => n._id.toString() !== currentId)
             setRelatedNews(related.slice(0, 3))
           }
         }
@@ -123,8 +123,8 @@ const NewsDetailPage = () => {
   }
 
   const handleRelatedNewsClick = (newsItem: INews) => {
-    if (newsItem.href) {
-      window.open(newsItem.href, '_blank')
+    if ((newsItem as any).href) {
+      window.open((newsItem as any).href, '_blank')
     } else {
       router.push(`/noticias/${newsItem.slug}`)
     }
@@ -204,9 +204,9 @@ const NewsDetailPage = () => {
             {news.title}
           </h1>
           
-          {news.subtitle && (
+          {(news as any).subtitle && (
             <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-              {news.subtitle}
+              {(news as any).subtitle}
             </p>
           )}
           
